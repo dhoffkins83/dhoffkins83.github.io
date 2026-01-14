@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dan Hoffkins – Customer Experience Ops Manager</title>
+  <meta name="description" content="Dan Hoffkins — Customer Experience Operations Manager. Workforce optimization, metrics that matter, and team leadership that improves CSAT." />
+
+  <style>
+    :root{
+      --bg:#0b0d10;
+      --card:#12151b;
+      --text:#e8eef7;
+      --muted:#aab6c6;
+      --line:#232a35;
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+      --max: 1040px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(125,211,252,.12), transparent 60%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(167,139,250,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px;}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(11,13,16,.75);
+      border-bottom:1px solid rgba(35,42,53,.55);
+    }
+    .nav{
+      max-width:var(--max); margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 18px;
+      gap: 14px;
+    }
+    .brand{font-weight:700; letter-spacing:.2px; white-space:nowrap;}
+    .links{display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:flex-end;}
+    .links a{
+      text-decoration:none; color:var(--muted);
+      padding:8px 10px; border-radius:10px;
+    }
+    .links a:hover{background:rgba(255,255,255,.04); color:var(--text)}
+    .hero{
+      padding:48px 0 26px;
+      display:grid; gap:22px;
+    }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border:1px solid rgba(35,42,53,.9);
+      background:rgba(18,21,27,.65);
+      border-radius:999px; color:var(--muted);
+      width:max-content;
+    }
+    .dot{width:8px;height:8px;border-radius:50%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow:0 0 22px rgba(125,211,252,.35);
+    }
+    h1{margin:0; font-size:44px; letter-spacing:-.8px; line-height:1.1}
+    .title{margin: 4px 0 0; color: var(--muted); font-size: 18px;}
+    .sub{max-width:760px; color:var(--muted); font-size:18px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:12px;
+      border:1px solid rgba(35,42,53,.9);
+      background:rgba(18,21,27,.8);
+      text-decoration:none;
+      color:var(--text);
+      box-shadow: var(--shadow);
+    }
+    .btn.primary{
+      border: none;
+      background: linear-gradient(90deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+      color:#0b0d10;
+      font-weight:700;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+      margin-top:26px;
+    }
+    .card{
+      grid-column: span 12;
+      background: rgba(18,21,27,.75);
+      border:1px solid rgba(35,42,53,.9);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    @media (min-width: 860px){
+      .card.third{grid-column: span 4}
+      .card.half{grid-column: span 6}
+    }
+    .kicker{color:var(--muted); text-transform:uppercase; letter-spacing:.12em; font-size:12px}
+    h2{margin:0 0 6px; font-size:22px}
+    h3{margin:0 0 6px; font-size:18px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .chip{
+      font-size:12px; color:var(--muted);
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(35,42,53,.9);
+      background: rgba(11,13,16,.35);
+    }
+    .section{margin-top:34px}
+    .metric{
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -.3px;
+      margin: 2px 0 4px;
+    }
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+    @media (min-width: 860px){
+      .twoCol{grid-template-columns: 1fr 1fr;}
+    }
+    footer{
+      margin-top:40px;
+      padding-top:20px;
+      border-top:1px solid rgba(35,42,53,.7);
+      color:var(--muted);
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">Dan Hoffkins</div>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#wins">Wins</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="badge"><span class="dot"></span> Customer Experience Ops • Support Ops • Leadership</div>
+
+      <h1>Dan Hoffkins</h1>
+      <div class="title">Customer Experience Operations Manager</div>
+
+      <!-- Option C phrasing, grounded + leadership -->
+      <p class="sub">
+        Getting the right people in the right queues, measuring what actually matters, and coaching teams to consistently improve CSAT.
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">Email me</a>
+
+        <!-- TODO: replace href with your hosted PDF path (e.g. /Dan-Hoffkins-Resume.pdf) -->
+        <a class="btn" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
+
+        <!-- TODO: paste your LinkedIn URL -->
+        <a class="btn" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="grid">
+        <div class="card half">
+          <div class="kicker">About</div>
+          <h2>Hi — I’m Dan.</h2>
+          <p class="muted">
+            I’m a customer experience and operations leader with 10+ years of experience building and scaling support teams across
+            healthcare, SaaS, and startup environments — including regulated oncology and diagnostics.
+          </p>
+          <p class="muted">
+            I work at the intersection of workforce planning, performance metrics, and people leadership. I’m at my best when things are a bit messy:
+            unclear ownership, inconsistent workflows, noisy data, and stressed queues. I bring structure, clarity, and coaching that sticks.
+          </p>
+        </div>
+
+        <div class="card half">
+          <div class="kicker">What I’m known for</div>
+          <ul class="list">
+            <li>Workforce optimization and queue health</li>
+            <li>KPI refinement, dashboards, and operating cadence</li>
+            <li>Leadership, coaching, and developing team leads</li>
+            <li>Blended internal + BPO support models</li>
+            <li>Scaling support in high-stakes, regulated environments</li>
+          </ul>
+
+          <div class="chips">
+            <span class="chip">Zendesk</span>
+            <span class="chip">Salesforce</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Looker</span>
+            <span class="chip">Jira</span>
+            <span class="chip">Talkdesk</span>
+            <span class="chip">HubSpot</span>
+            <span class="chip">Notion</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK / CASE STUDIES -->
+    <section id="work" class="section">
+      <div class="kicker">Work</div>
+      <h2>Selected case studies</h2>
+      <p class="muted" style="max-width:760px;">
+        Short, practical writeups — built to be skimmable now, and easy to expand later.
+      </p>
+
+      <div class="grid">
+        <article class="card half">
+          <h3>Workforce Management & Queue Optimization</h3>
+          <div class="twoCol">
+            <div>
+              <div class="kicker">Problem</div>
+              <p class="muted">Queues and staffing didn’t match demand, creating avoidable backlog and inconsistent response times.</p>
+            </div>
+            <div>
+              <div class="kicker">What I did</div>
+              <p class="muted">Tightened queue strategy and workforce planning, aligned capacity to volume, and created clearer queue health reporting.</p>
+            </div>
+          </div>
+          <div class="kicker" style="margin-top:10px;">Impact</div>
+          <p class="muted">More predictable support coverage, improved queue health, and fewer “surprise” escalations.</p>
+          <div class="chips">
+            <span class="chip">WFM</span><span class="chip">SLA / backlog</span><span class="chip">Capacity planning</span>
+          </div>
+        </article>
+
+        <article class="card half">
+          <h3>KPIs that Drive Behavior (Not Just Reporting)</h3>
+          <div class="twoCol">
+            <div>
+              <div class="kicker">Problem</div>
+              <p class="muted">Metrics existed, but they weren’t connected to coaching and decisions — so they didn’t change outcomes.</p>
+            </div>
+            <div>
+              <div class="kicker">What I did</div>
+              <p class="muted">Refined KPIs, built dashboards, and tied weekly reviews + coaching to a small set of actionable indicators.</p>
+            </div>
+          </div>
+          <div class="kicker" style="margin-top:10px;">Impact</div>
+          <p class="muted">Clearer accountability and stronger performance rhythms; contributed to improved CSAT/NPS in blended teams.</p>
+          <div class="chips">
+            <span class="chip">Dashboards</span><span class="chip">Operating cadence</span><span class="chip">Coaching loops</span>
+          </div>
+        </article>
+
+        <article class="card half">
+          <h3>Leadership, Coaching & Performance Uplift</h3>
+          <div class="twoCol">
+            <div>
+              <div class="kicker">Problem</div>
+              <p class="muted">Scaling teams needed consistent coaching and leadership structure across tiers.</p>
+            </div>
+            <div>
+              <div class="kicker">What I did</div>
+              <p class="muted">Implemented structured coaching and mentorship, developed team leads, and reinforced performance expectations with data.</p>
+            </div>
+          </div>
+          <div class="kicker" style="margin-top:10px;">Impact</div>
+          <p class="muted">Improved agent performance and more consistent coaching across support tiers.</p>
+          <div class="chips">
+            <span class="chip">Manager enablement</span><span class="chip">QA</span><span class="chip">Feedback loops</span>
+          </div>
+        </article>
+
+        <article class="card half">
+          <h3>Incident Management & High-Priority Escalations</h3>
+          <div class="twoCol">
+            <div>
+              <div class="kicker">Problem</div>
+              <p class="muted">Urgent issues required a clear system for triage, ownership, and fast response — especially at scale.</p>
+            </div>
+            <div>
+              <div class="kicker">What I did</div>
+              <p class="muted">Built and scaled an incident response motion, clarified escalation paths, and introduced consistent SOPs.</p>
+            </div>
+          </div>
+          <div class="kicker" style="margin-top:10px;">Impact</div>
+          <p class="muted">Faster urgent issue response and clearer ownership under pressure.</p>
+          <div class="chips">
+            <span class="chip">24/7 support</span><span class="chip">Escalations</span><span class="chip">SOPs</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WINS -->
+    <section id="wins" class="section">
+      <div class="kicker">Wins</div>
+      <h2>Proof, quickly</h2>
+
+      <div class="grid">
+        <div class="card third">
+          <div class="metric">+20%</div>
+          <h3>CSAT / NPS lift</h3>
+          <p class="muted small">Improved queue management and outcomes for a blended internal + BPO team.</p>
+        </div>
+
+        <div class="card third">
+          <div class="metric">-50%</div>
+          <h3>Less manual work</h3>
+          <p class="muted small">Automated internal workflows to reduce coordination overhead and improve visibility.</p>
+        </div>
+
+        <div class="card third">
+          <div class="metric">-80%</div>
+          <h3>Urgent response time</h3>
+          <p class="muted small">Built and scaled a 24/7 incident management team and tightened escalation motion.</p>
+        </div>
+      </div>
+
+      <p class="muted small" style="margin-top:10px;">
+        (These highlights reflect accomplishments across roles in healthcare and SaaS environments.) 
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="kicker">Skills</div>
+      <h2>Toolbelt</h2>
+
+      <div class="grid">
+        <div class="card half">
+          <h3>Leadership & Ops</h3>
+          <div class="chips">
+            <span class="chip">Workforce planning</span>
+            <span class="chip">Queue management</span>
+            <span class="chip">KPI strategy</span>
+            <span class="chip">SLA management</span>
+            <span class="chip">Incident response</span>
+            <span class="chip">Escalation design</span>
+            <span class="chip">Coaching & mentorship</span>
+            <span class="chip">BPO management</span>
+          </div>
+        </div>
+
+        <div class="card half">
+          <h3>Platforms & Reporting</h3>
+          <div class="chips">
+            <span class="chip">Zendesk</span>
+            <span class="chip">Salesforce</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Looker</span>
+            <span class="chip">Metabase</span>
+            <span class="chip">Jira</span>
+            <span class="chip">Talkdesk</span>
+            <span class="chip">HubSpot</span>
+            <span class="chip">Notion</span>
+            <span class="chip">Excel / Sheets</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="grid">
+        <div class="card">
+          <div class="kicker">Contact</div>
+          <h2>Let’s talk.</h2>
+          <p class="muted" style="max-width:760px;">
+            If you’re hiring for Customer Experience Ops, Support Ops, or a leadership role focused on scaling teams and improving CSAT,
+            I’d love to connect.
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">daniel.hoffkins@gmail.com</a>
+            <!-- TODO: paste your LinkedIn URL -->
+            <a class="btn" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="small">© <span id="year"></span> Dan Hoffkins</div>
+      <div class="small">Simple, fast, and recruiter-friendly.</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
