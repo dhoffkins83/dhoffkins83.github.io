@@ -8,245 +8,351 @@
 
   <style>
     :root{
-      /* Dribbble-inspired warm neutrals + calm contrast */
-      --bg:#1D1A16;          /* deep espresso */
-      --card:#221E19;        /* slightly lighter surface */
-      --text:#EFF1F2;        /* soft white */
-      --muted:#B9C4CE;       /* cool gray */
-      --line:rgba(239,241,242,.14);
+      /* Dark, warm, calm (premium ops vibe) */
+      --bg:#14110f;
+      --bg2:#1b1714;
+      --card: rgba(255,255,255,.04);
+      --card2: rgba(255,255,255,.06);
+      --text:#f2f2f2;
+      --muted: rgba(242,242,242,.72);
+      --line: rgba(242,242,242,.12);
 
-      /* Warm accent for personality */
-      --accent:#907569;      /* warm rose/brown */
-      --accent2:#4D4438;     /* warm brown */
+      --accent:#c7a07a;  /* warm sand */
+      --accent2:#8fa7c3; /* cool steel */
 
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:16px;
-      --max: 1040px;
+      --shadow: 0 18px 60px rgba(0,0,0,.38);
+      --radius:18px;
+      --max: 1080px;
+
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     }
 
-    /* Light theme (toggle) */
     html[data-theme="light"]{
-      --bg:#EFF1F2;
-      --card:#FFFFFF;
-      --text:#1D1A16;
-      --muted:#4D4438;
-      --line:rgba(29,26,22,.12);
-
-      /* Keep accents consistent across themes */
-      --accent:#907569;
-      --accent2:#4D4438;
-
-      --shadow: 0 10px 30px rgba(0,0,0,.12);
+      --bg:#f2f2f2;
+      --bg2:#ffffff;
+      --card: rgba(20,17,15,.045);
+      --card2: rgba(20,17,15,.07);
+      --text:#14110f;
+      --muted: rgba(20,17,15,.68);
+      --line: rgba(20,17,15,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.12);
     }
 
     *{box-sizing:border-box}
-
     body{
       margin:0;
       font-family:var(--font);
-
-      /* Cleaner background: subtle, not loud */
       background:
-        radial-gradient(900px 500px at 18% -10%, rgba(144,117,105,.14), transparent 60%),
-        radial-gradient(700px 420px at 90% 0%, rgba(185,196,206,.10), transparent 55%),
-        var(--bg);
-
+        radial-gradient(920px 560px at 16% -10%, rgba(199,160,122,.18), transparent 62%),
+        radial-gradient(760px 460px at 92% 0%, rgba(143,167,195,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       color:var(--text);
-      line-height:1.5;
+      line-height:1.55;
     }
-
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px;}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 28px 18px 80px;}
 
     header{
-      position:sticky; top:0; z-index:10;
+      position:sticky; top:0; z-index:20;
       backdrop-filter: blur(10px);
       background: color-mix(in srgb, var(--bg) 78%, transparent);
       border-bottom:1px solid var(--line);
     }
-
     .nav{
-      max-width:var(--max); margin:0 auto;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 18px;
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       gap: 14px;
+      padding: 14px 18px;
     }
-
-    .brand{font-weight:700; letter-spacing:.2px; white-space:nowrap;}
-
+    .brand{
+      font-weight: 780;
+      letter-spacing: .2px;
+      white-space: nowrap;
+    }
     .links{
       display:flex;
-      gap:8px;
-      flex-wrap:wrap;
       align-items:center;
+      gap: 6px;
+      flex-wrap:wrap;
       justify-content:flex-end;
     }
-
     .links a{
       text-decoration:none;
       color:var(--muted);
-      padding:8px 10px;
-      border-radius:10px;
-      border: 1px solid transparent;
+      padding: 8px 10px;
+      border-radius: 12px;
     }
-
     .links a:hover{
-      background: color-mix(in srgb, var(--card) 65%, transparent);
-      border-color: var(--line);
-      color:var(--text)
+      background: var(--card);
+      color: var(--text);
     }
-
-    /* Theme toggle button */
     .themeToggle{
       border:1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 55%, transparent);
-      color:var(--muted);
-      padding:8px 10px;
-      border-radius:10px;
-      cursor:pointer;
-      font: inherit;
-      line-height: 1;
-    }
-    .themeToggle:hover{
-      background: color-mix(in srgb, var(--card) 75%, transparent);
-      color:var(--text);
-    }
-
-    .hero{
-      padding:48px 0 26px;
-      display:grid; gap:22px;
-    }
-
-    .badge{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px;
-      border:1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 55%, transparent);
-      border-radius:999px;
-      color:var(--muted);
-      width:max-content;
-    }
-
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--accent2)));
-      box-shadow:0 0 0 6px rgba(144,117,105,.14);
-    }
-
-    h1{
-      margin:0;
-      font-size:44px;
-      letter-spacing:-.8px;
-      line-height:1.1
-    }
-
-    .title{
-      margin: 4px 0 0;
+      background: var(--card);
       color: var(--muted);
-      font-size: 18px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      cursor:pointer;
+      font:inherit;
+      line-height:1;
+    }
+    .themeToggle:hover{ background: var(--card2); color: var(--text); }
+
+    /* Typography + spacing */
+    .kicker{
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 12px;
+      margin: 0 0 10px;
+    }
+    h1{
+      margin: 12px 0 10px;
+      font-family: var(--serif);
+      letter-spacing: -0.8px;
+      line-height: 1.04;
+      font-size: clamp(40px, 5vw, 64px);
+    }
+    h2{ margin: 0 0 10px; font-size: 24px; letter-spacing: -.2px; }
+    h3{ margin: 0 0 8px; font-size: 18px; letter-spacing: -.1px; }
+    p{ margin: 0; }
+    .muted{ color: var(--muted); }
+    .small{ font-size: 13px; color: var(--muted); }
+
+    /* Sections */
+    .section{
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .sub{max-width:760px; color:var(--muted); font-size:18px}
-    .cta{display:flex; gap:12px; flex-wrap:wrap}
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background: color-mix(in srgb, var(--card) 55%, transparent);
-      text-decoration:none;
-      color:var(--text);
-      box-shadow: var(--shadow);
-    }
-
-    .btn.primary{
-      border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
-      background:
-        linear-gradient(180deg,
-          color-mix(in srgb, var(--accent) 26%, transparent),
-          color-mix(in srgb, var(--card) 35%, transparent)
-        );
-      color: var(--text);
-      font-weight:700;
-    }
-
-    .btn:hover{transform: translateY(-1px)}
-
+    /* Layout */
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:16px;
-      margin-top:26px;
+      gap: 14px;
+      margin-top: 16px;
     }
-
     .card{
       grid-column: span 12;
-      background: color-mix(in srgb, var(--card) 78%, transparent);
-      border:1px solid var(--line);
+      background: var(--card);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding:18px;
+      padding: 18px;
       box-shadow: var(--shadow);
     }
-
-    @media (min-width: 860px){
-      .card.third{grid-column: span 4}
-      .card.half{grid-column: span 6}
+    @media (min-width: 920px){
+      .span4{ grid-column: span 4; }
+      .span5{ grid-column: span 5; }
+      .span6{ grid-column: span 6; }
+      .span7{ grid-column: span 7; }
+      .span8{ grid-column: span 8; }
     }
 
-    .kicker{
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      font-size:12px
+    /* Hero */
+    .hero{
+      padding: 46px 0 22px;
+      border-bottom: 1px solid var(--line);
     }
-
-    h2{margin:0 0 6px; font-size:22px}
-    h3{margin:0 0 6px; font-size:18px}
-    .muted{color:var(--muted)}
-    .small{font-size:13px}
-
-    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
-
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-
-    .chip{
-      font-size:12px;
-      color:var(--muted);
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: color-mix(in srgb, var(--bg) 70%, transparent);
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      width: fit-content;
+      font-size: 13px;
     }
-
-    .section{margin-top:34px}
-
-    .metric{
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -.3px;
-      margin: 2px 0 4px;
+    .dot{
+      width: 9px; height: 9px; border-radius: 50%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(199,160,122,.12);
+    }
+    .subhead{
+      margin-top: 10px;
+      max-width: 68ch;
+      font-size: 18px;
+      color: var(--muted);
+    }
+    .cta{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      text-decoration:none;
       color: var(--text);
     }
+    .btn:hover{ background: var(--card2); }
+    .btn.primary{
+      border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+      background: linear-gradient(180deg,
+        color-mix(in srgb, var(--accent) 22%, transparent),
+        var(--card)
+      );
+      font-weight: 750;
+    }
 
-    .twoCol{
-      display:grid;
-      grid-template-columns: 1fr;
+    /* Dashboard stats */
+    .stat{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--card2) 70%, transparent);
+      border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+    }
+    .stat b{
+      font-size: 28px;
+      letter-spacing: -.4px;
+    }
+    .spark{
+      width: 120px; height: 34px;
+      opacity: .95;
+    }
+
+    /* Mini “KPI dial” */
+    .dialWrap{
+      display:flex;
       gap: 14px;
+      align-items:center;
+      flex-wrap:wrap;
       margin-top: 10px;
     }
+    .dial{
+      width: 84px; height: 84px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 60%), var(--card);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: var(--shadow);
+    }
+    .dial span{
+      font-weight: 850;
+      letter-spacing: -.3px;
+      font-size: 18px;
+    }
+    .dialLabel{ max-width: 40ch; }
+    .dialLabel .small{ margin-top: 4px; display:block; }
 
-    @media (min-width: 860px){
-      .twoCol{grid-template-columns: 1fr 1fr;}
+    /* Skills bars */
+    .barRow{ margin-top: 12px; }
+    .barTop{
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .bar{
+      margin-top: 8px;
+      height: 10px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card2) 75%, transparent);
+      border: 1px solid var(--line);
+      overflow:hidden;
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      width: var(--w);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 85%, transparent), color-mix(in srgb, var(--accent2) 70%, transparent));
+      border-radius: 999px;
     }
 
+    /* Collapsible case studies */
+    details{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 16px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .sumTitle{
+      display:flex; flex-direction:column; gap: 2px;
+    }
+    .chev{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      display:flex; align-items:center; justify-content:center;
+      border: 1px solid var(--line);
+      background: var(--card2);
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+    details[open] .chev{ transform: rotate(180deg); color: var(--text); }
+    .detailBody{
+      padding: 0 18px 18px;
+      border-top: 1px solid var(--line);
+    }
+    .tri{
+      display:grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (min-width: 920px){
+      .tri{ grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .box{
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+      background: color-mix(in srgb, var(--card2) 70%, transparent);
+    }
+
+    /* Simple ops flow */
+    .flow{
+      display:grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    @media (min-width: 920px){
+      .flow{ grid-template-columns: repeat(4, 1fr); }
+    }
+    .step{
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+    .step b{ display:block; margin-bottom: 4px; }
+    .step .small{ display:block; }
+
     footer{
-      margin-top:40px;
-      padding-top:20px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between;
+      padding-top: 22px;
+      color: var(--muted);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap: 10px;
     }
   </style>
 </head>
@@ -256,257 +362,369 @@
     <div class="nav">
       <div class="brand">Dan Hoffkins</div>
       <nav class="links">
-        <a href="#about">About</a>
+        <a href="#impact">Impact</a>
         <a href="#work">Work</a>
-        <a href="#wins">Wins</a>
+        <a href="#ops">How I Operate</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
-
-        <!-- Theme toggle (dark ↔ light) -->
-        <button class="themeToggle" id="themeToggle" type="button" aria-label="Toggle theme">
-          Theme
-        </button>
+        <button class="themeToggle" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- HERO -->
+
+    <!-- HERO (sell outcomes first) -->
     <section class="hero">
-      <div class="badge"><span class="dot"></span> Customer Experience Ops • Support Ops • Leadership</div>
+      <div class="pill"><span class="dot"></span> CX Ops • Support Ops • Workforce • Leadership</div>
 
-      <h1>Dan Hoffkins</h1>
-      <div class="title">Customer Experience Operations Manager</div>
+      <h1>Customer Experience Ops that feels calm — even at scale.</h1>
 
-      <p class="sub">
-        Getting the right people in the right queues, measuring what actually matters, and coaching teams to consistently improve CSAT.
+      <p class="subhead">
+        I’m Dan Hoffkins. I build predictable support systems: queue health, staffing alignment, KPI clarity, and coaching loops that move CSAT.
       </p>
 
       <div class="cta">
-        <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">Email me</a>
-        <a class="btn" href="./Daniel-Hoffkins-Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
+        <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">Email</a>
+        <a class="btn" href="./Dan-Hoffkins-Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
         <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="grid">
-        <div class="card half">
-          <div class="kicker">About</div>
-          <h2>Hi — I’m Dan.</h2>
-          <p class="muted">
-            I’m a customer experience and operations leader with 10+ years of experience building and scaling support teams across
-            healthcare, SaaS, and startup environments — including regulated oncology and diagnostics.
-          </p>
-          <p class="muted">
-            I work at the intersection of workforce planning, performance metrics, and people leadership. I’m at my best when things are a bit messy:
-            unclear ownership, inconsistent workflows, noisy data, and stressed queues. I bring structure, clarity, and coaching that sticks.
-          </p>
+      <div class="grid" style="margin-top:18px;">
+        <div class="card span7">
+          <div class="kicker">Impact dashboard</div>
+
+          <div class="stat">
+            <div>
+              <b>+20%</b>
+              <div class="small">CSAT / NPS lift (blended internal + BPO)</div>
+            </div>
+            <svg class="spark" viewBox="0 0 120 34" fill="none">
+              <path d="M2 28 C16 26, 18 14, 28 18 C38 22, 44 8, 56 12 C66 16, 72 6, 84 10 C96 14, 104 6, 118 6" stroke="currentColor" stroke-width="2" opacity=".35"/>
+              <path d="M2 28 C16 26, 18 14, 28 18 C38 22, 44 8, 56 12 C66 16, 72 6, 84 10 C96 14, 104 6, 118 6" stroke="url(#g1)" stroke-width="2.8" />
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="120" y2="0">
+                  <stop stop-color="rgba(199,160,122,.95)"/>
+                  <stop offset="1" stop-color="rgba(143,167,195,.95)"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="stat" style="margin-top:10px;">
+            <div>
+              <b>-80%</b>
+              <div class="small">Urgent issue response time (incident motion)</div>
+            </div>
+            <svg class="spark" viewBox="0 0 120 34" fill="none">
+              <path d="M2 6 C18 8, 26 10, 36 12 C48 14, 56 16, 66 18 C76 20, 86 22, 96 24 C106 26, 110 28, 118 28" stroke="url(#g2)" stroke-width="2.8"/>
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="120" y2="0">
+                  <stop stop-color="rgba(143,167,195,.95)"/>
+                  <stop offset="1" stop-color="rgba(199,160,122,.95)"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="stat" style="margin-top:10px;">
+            <div>
+              <b>-50%</b>
+              <div class="small">Manual coordination reduced (ops workflows + docs)</div>
+            </div>
+            <svg class="spark" viewBox="0 0 120 34" fill="none">
+              <path d="M2 10 C16 12, 28 18, 40 16 C54 14, 64 22, 76 20 C90 18, 102 26, 118 26" stroke="url(#g3)" stroke-width="2.8"/>
+              <defs>
+                <linearGradient id="g3" x1="0" y1="0" x2="120" y2="0">
+                  <stop stop-color="rgba(199,160,122,.95)"/>
+                  <stop offset="1" stop-color="rgba(143,167,195,.95)"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="dialWrap">
+            <div class="dial"><span>WFM</span></div>
+            <div class="dial"><span>KPI</span></div>
+            <div class="dial"><span>CSAT</span></div>
+            <div class="dialLabel">
+              <b>What you get when I’m on your team</b>
+              <span class="small">Clear ownership, a clean operating cadence, and a support org that doesn’t rely on heroics.</span>
+            </div>
+          </div>
         </div>
 
-        <div class="card half">
-          <div class="kicker">What I’m known for</div>
-          <ul class="list">
-            <li>Workforce optimization and queue health</li>
-            <li>KPI refinement, dashboards, and operating cadence</li>
-            <li>Leadership, coaching, and developing team leads</li>
-            <li>Blended internal + BPO support models</li>
-            <li>Scaling support in high-stakes, regulated environments</li>
-          </ul>
-
-          <div class="chips">
-            <span class="chip">Zendesk</span>
-            <span class="chip">Salesforce</span>
-            <span class="chip">Tableau</span>
-            <span class="chip">Looker</span>
-            <span class="chip">Jira</span>
-            <span class="chip">Talkdesk</span>
-            <span class="chip">HubSpot</span>
-            <span class="chip">Notion</span>
+        <div class="card span5">
+          <div class="kicker">In one minute</div>
+          <h2 style="margin-top:6px;">Operator mindset. People-first leadership.</h2>
+          <p class="muted" style="margin-top:10px;">
+            I’m a CX Ops leader with 10+ years scaling support across healthcare, SaaS, and startup environments — including regulated oncology and diagnostics.
+          </p>
+          <p class="muted" style="margin-top:10px;">
+            I do my best work when things are messy: stressed queues, unclear ownership, inconsistent workflows, noisy data.
+            I bring structure, clarity, and coaching that sticks.
+          </p>
+          <div class="cta" style="margin-top:14px;">
+            <a class="btn" href="#work">See case studies</a>
+            <a class="btn" href="#contact">Reach out</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WORK / CASE STUDIES -->
+    <!-- IMPACT (anchor) -->
+    <section id="impact" class="section">
+      <div class="kicker">Impact</div>
+      <h2>Results that ops leaders care about</h2>
+      <p class="muted" style="max-width:78ch;">
+        I focus on outcomes: predictable coverage, cleaner queues, better escalation hygiene, and KPIs that drive behavior—not just reporting.
+      </p>
+
+      <div class="grid">
+        <div class="card span4">
+          <div class="kicker">Queue health</div>
+          <h3>Backlog ↓, predictability ↑</h3>
+          <p class="muted">Align staffing to demand, tighten routing, and instrument queue visibility so surprises stop happening.</p>
+        </div>
+        <div class="card span4">
+          <div class="kicker">Metrics</div>
+          <h3>Small KPI set, big movement</h3>
+          <p class="muted">Turn KPIs into a weekly cadence: review → coaching → iteration → measurable improvement.</p>
+        </div>
+        <div class="card span4">
+          <div class="kicker">Leadership</div>
+          <h3>Coaching loops that scale</h3>
+          <p class="muted">Consistent expectations + manager enablement so performance doesn’t depend on one great lead.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK (collapsible to reduce clutter) -->
     <section id="work" class="section">
       <div class="kicker">Work</div>
-      <h2>Selected case studies</h2>
-      <p class="muted" style="max-width:760px;">
-        Short, practical writeups — built to be skimmable now, and easy to expand later.
-      </p>
+      <h2>Case studies (click to expand)</h2>
+      <p class="muted" style="max-width:78ch;">Skimmable at first glance. Full detail when you want it.</p>
 
-      <div class="grid">
-        <article class="card half">
-          <h3>Workforce Management & Queue Optimization</h3>
-          <div class="twoCol">
-            <div>
-              <div class="kicker">Problem</div>
-              <p class="muted">Queues and staffing didn’t match demand, creating avoidable backlog and inconsistent response times.</p>
-            </div>
-            <div>
-              <div class="kicker">What I did</div>
-              <p class="muted">Tightened queue strategy and workforce planning, aligned capacity to volume, and created clearer queue health reporting.</p>
-            </div>
-          </div>
-          <div class="kicker" style="margin-top:10px;">Impact</div>
-          <p class="muted">More predictable support coverage, improved queue health, and fewer “surprise” escalations.</p>
-          <div class="chips">
-            <span class="chip">WFM</span><span class="chip">SLA / backlog</span><span class="chip">Capacity planning</span>
-          </div>
-        </article>
+      <div class="grid" style="margin-top:14px;">
+        <div class="span12" style="grid-column: span 12; display:grid; gap:12px;">
 
-        <article class="card half">
-          <h3>KPIs that Drive Behavior (Not Just Reporting)</h3>
-          <div class="twoCol">
-            <div>
-              <div class="kicker">Problem</div>
-              <p class="muted">Metrics existed, but they weren’t connected to coaching and decisions — so they didn’t change outcomes.</p>
+          <details>
+            <summary>
+              <div class="sumTitle">
+                <b>Workforce Management & Queue Optimization</b>
+                <span class="small">Coverage aligned to demand • backlog control • fewer surprise escalations</span>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="detailBody">
+              <div class="tri">
+                <div class="box">
+                  <div class="kicker">Problem</div>
+                  <p class="muted">Queues and staffing didn’t match demand, creating avoidable backlog and inconsistent response times.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">What I did</div>
+                  <p class="muted">Tightened queue strategy and workforce planning, aligned capacity to volume, and created clearer queue health reporting.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">Impact</div>
+                  <p class="muted">More predictable coverage, improved queue health, and fewer “surprise” escalations.</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <div class="kicker">What I did</div>
-              <p class="muted">Refined KPIs, built dashboards, and tied weekly reviews + coaching to a small set of actionable indicators.</p>
-            </div>
-          </div>
-          <div class="kicker" style="margin-top:10px;">Impact</div>
-          <p class="muted">Clearer accountability and stronger performance rhythms; contributed to improved CSAT/NPS in blended teams.</p>
-          <div class="chips">
-            <span class="chip">Dashboards</span><span class="chip">Operating cadence</span><span class="chip">Coaching loops</span>
-          </div>
-        </article>
+          </details>
 
-        <article class="card half">
-          <h3>Leadership, Coaching & Performance Uplift</h3>
-          <div class="twoCol">
-            <div>
-              <div class="kicker">Problem</div>
-              <p class="muted">Scaling teams needed consistent coaching and leadership structure across tiers.</p>
+          <details>
+            <summary>
+              <div class="sumTitle">
+                <b>KPIs that Drive Behavior (Not Just Reporting)</b>
+                <span class="small">Dashboards → cadence → coaching → measurable movement</span>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="detailBody">
+              <div class="tri">
+                <div class="box">
+                  <div class="kicker">Problem</div>
+                  <p class="muted">Metrics existed, but they weren’t connected to coaching and decisions—so they didn’t change outcomes.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">What I did</div>
+                  <p class="muted">Refined KPIs, built dashboards, and tied weekly reviews + coaching to a small set of actionable indicators.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">Impact</div>
+                  <p class="muted">Clearer accountability and stronger performance rhythms; contributed to improved CSAT/NPS in blended teams.</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <div class="kicker">What I did</div>
-              <p class="muted">Implemented structured coaching and mentorship, developed team leads, and reinforced performance expectations with data.</p>
-            </div>
-          </div>
-          <div class="kicker" style="margin-top:10px;">Impact</div>
-          <p class="muted">Improved agent performance and more consistent coaching across support tiers.</p>
-          <div class="chips">
-            <span class="chip">Manager enablement</span><span class="chip">QA</span><span class="chip">Feedback loops</span>
-          </div>
-        </article>
+          </details>
 
-        <article class="card half">
-          <h3>Incident Management & High-Priority Escalations</h3>
-          <div class="twoCol">
-            <div>
-              <div class="kicker">Problem</div>
-              <p class="muted">Urgent issues required a clear system for triage, ownership, and fast response — especially at scale.</p>
+          <details>
+            <summary>
+              <div class="sumTitle">
+                <b>Leadership, Coaching & Performance Uplift</b>
+                <span class="small">Manager enablement • QA alignment • consistent expectations</span>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="detailBody">
+              <div class="tri">
+                <div class="box">
+                  <div class="kicker">Problem</div>
+                  <p class="muted">Scaling teams needed consistent coaching and leadership structure across tiers.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">What I did</div>
+                  <p class="muted">Implemented structured coaching and mentorship, developed team leads, and reinforced expectations with data.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">Impact</div>
+                  <p class="muted">Improved performance and more consistent coaching across support tiers.</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <div class="kicker">What I did</div>
-              <p class="muted">Built and scaled an incident response motion, clarified escalation paths, and introduced consistent SOPs.</p>
+          </details>
+
+          <details>
+            <summary>
+              <div class="sumTitle">
+                <b>Incident Management & High-Priority Escalations</b>
+                <span class="small">24/7 motion • clear ownership • faster urgent response</span>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="detailBody">
+              <div class="tri">
+                <div class="box">
+                  <div class="kicker">Problem</div>
+                  <p class="muted">Urgent issues required a system for triage, ownership, and fast response—especially at scale.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">What I did</div>
+                  <p class="muted">Built and scaled an incident response motion, clarified escalation paths, and introduced consistent SOPs.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">Impact</div>
+                  <p class="muted">Faster urgent issue response and clearer ownership under pressure.</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="kicker" style="margin-top:10px;">Impact</div>
-          <p class="muted">Faster urgent issue response and clearer ownership under pressure.</p>
-          <div class="chips">
-            <span class="chip">24/7 support</span><span class="chip">Escalations</span><span class="chip">SOPs</span>
-          </div>
-        </article>
+          </details>
+
+        </div>
       </div>
     </section>
 
-    <!-- WINS -->
-    <section id="wins" class="section">
-      <div class="kicker">Wins</div>
-      <h2>Proof, quickly</h2>
+    <!-- OPS PLAYBOOK (visual, not text) -->
+    <section id="ops" class="section">
+      <div class="kicker">How I operate</div>
+      <h2>My CX Ops playbook</h2>
+      <p class="muted" style="max-width:78ch;">
+        This is the loop I run to turn “support feels chaotic” into “support feels predictable.”
+      </p>
 
-      <div class="grid">
-        <div class="card third">
-          <div class="metric">+20%</div>
-          <h3>CSAT / NPS lift</h3>
-          <p class="muted small">Improved queue management and outcomes for a blended internal + BPO team.</p>
+      <div class="flow">
+        <div class="step">
+          <b>1) Diagnose</b>
+          <span class="small">Queue health, volume patterns, SLA misses, top drivers</span>
         </div>
-
-        <div class="card third">
-          <div class="metric">-50%</div>
-          <h3>Less manual work</h3>
-          <p class="muted small">Automated internal workflows to reduce coordination overhead and improve visibility.</p>
+        <div class="step">
+          <b>2) Align</b>
+          <span class="small">Staffing ↔ demand, routing rules, ownership, escalation paths</span>
         </div>
-
-        <div class="card third">
-          <div class="metric">-80%</div>
-          <h3>Urgent response time</h3>
-          <p class="muted small">Built and scaled a 24/7 incident management team and tightened escalation motion.</p>
+        <div class="step">
+          <b>3) Instrument</b>
+          <span class="small">Dashboards + weekly cadence; make “good” visible</span>
+        </div>
+        <div class="step">
+          <b>4) Coach</b>
+          <span class="small">Feedback loops that scale: managers, QA, enablement</span>
         </div>
       </div>
-
-      <p class="muted small" style="margin-top:10px;">
-        (These highlights reflect accomplishments across roles in healthcare and SaaS environments.)
-      </p>
     </section>
 
-    <!-- SKILLS -->
+    <!-- SKILLS (visual bars instead of chip soup) -->
     <section id="skills" class="section">
       <div class="kicker">Skills</div>
-      <h2>Toolbelt</h2>
+      <h2>What I’m strong at</h2>
 
       <div class="grid">
-        <div class="card half">
+        <div class="card span6">
           <h3>Leadership & Ops</h3>
-          <div class="chips">
-            <span class="chip">Workforce planning</span>
-            <span class="chip">Queue management</span>
-            <span class="chip">KPI strategy</span>
-            <span class="chip">SLA management</span>
-            <span class="chip">Incident response</span>
-            <span class="chip">Escalation design</span>
-            <span class="chip">Coaching & mentorship</span>
-            <span class="chip">BPO management</span>
+
+          <div class="barRow">
+            <div class="barTop"><span>Workforce planning & queue strategy</span><span>Expert</span></div>
+            <div class="bar"><i style="--w:92%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>KPI design & operating cadence</span><span>Expert</span></div>
+            <div class="bar"><i style="--w:88%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Escalations & incident response</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:84%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Coaching, QA alignment, manager enablement</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:86%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>BPO management (blended models)</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:80%"></i></div>
           </div>
         </div>
 
-        <div class="card half">
-          <h3>Platforms & Reporting</h3>
-          <div class="chips">
-            <span class="chip">Zendesk</span>
-            <span class="chip">Salesforce</span>
-            <span class="chip">Tableau</span>
-            <span class="chip">Looker</span>
-            <span class="chip">Metabase</span>
-            <span class="chip">Jira</span>
-            <span class="chip">Talkdesk</span>
-            <span class="chip">HubSpot</span>
-            <span class="chip">Notion</span>
-            <span class="chip">Excel / Sheets</span>
+        <div class="card span6">
+          <h3>Platforms & reporting</h3>
+          <p class="muted">I’m tool-agnostic, but here’s where I’ve done a lot of work.</p>
+
+          <div class="barRow">
+            <div class="barTop"><span>Zendesk / ticketing ops</span><span>Expert</span></div>
+            <div class="bar"><i style="--w:90%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Reporting & dashboards</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:85%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>CRM + cross-functional ops</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:78%"></i></div>
+          </div>
+
+          <div class="small" style="margin-top:14px;">
+            Zendesk • Salesforce • Tableau • Looker • Metabase • Jira • Talkdesk • HubSpot • Notion • Sheets/Excel
           </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="grid">
-        <div class="card">
-          <div class="kicker">Contact</div>
-          <h2>Let’s talk.</h2>
-          <p class="muted" style="max-width:760px;">
-            If you’re hiring for Customer Experience Ops, Support Ops, or a leadership role focused on scaling teams and improving CSAT,
-            I’d love to connect.
-          </p>
+    <section id="contact" class="section" style="border-bottom:none;">
+      <div class="kicker">Contact</div>
+      <h2>Let’s talk.</h2>
+      <p class="muted" style="max-width:78ch;">
+        If you’re hiring for Customer Experience Ops, Support Ops, or an ops leadership role focused on scaling teams and improving CSAT,
+        I’d love to connect.
+      </p>
 
-          <div class="cta">
-            <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">daniel.hoffkins@gmail.com</a>
-            <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
-        </div>
+      <div class="cta" style="margin-top:14px;">
+        <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">daniel.hoffkins@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
+
+      <footer style="margin-top:22px;">
+        <div class="small">© <span id="year"></span> Dan Hoffkins</div>
+        <div class="small">Clean ops, clear outcomes.</div>
+      </footer>
     </section>
 
-    <footer>
-      <div class="small">© <span id="year"></span> Dan Hoffkins</div>
-      <div class="small">Simple, fast, and recruiter-friendly.</div>
-    </footer>
   </main>
 
   <script>
@@ -517,8 +735,6 @@
     const key = "theme";
     const btn = document.getElementById("themeToggle");
     const saved = localStorage.getItem(key);
-
-    // Default is dark. If saved is "light", set light.
     if (saved === "light") document.documentElement.dataset.theme = "light";
 
     btn.addEventListener("click", () => {
