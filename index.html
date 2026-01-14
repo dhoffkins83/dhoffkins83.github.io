@@ -8,135 +8,243 @@
 
   <style>
     :root{
-      --bg:#0b0d10;
-      --card:#12151b;
-      --text:#e8eef7;
-      --muted:#aab6c6;
-      --line:#232a35;
-      --accent:#7dd3fc;
-      --accent2:#a78bfa;
+      /* Dribbble-inspired warm neutrals + calm contrast */
+      --bg:#1D1A16;          /* deep espresso */
+      --card:#221E19;        /* slightly lighter surface */
+      --text:#EFF1F2;        /* soft white */
+      --muted:#B9C4CE;       /* cool gray */
+      --line:rgba(239,241,242,.14);
+
+      /* Warm accent for personality */
+      --accent:#907569;      /* warm rose/brown */
+      --accent2:#4D4438;     /* warm brown */
+
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius:16px;
       --max: 1040px;
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
+
+    /* Light theme (toggle) */
+    html[data-theme="light"]{
+      --bg:#EFF1F2;
+      --card:#FFFFFF;
+      --text:#1D1A16;
+      --muted:#4D4438;
+      --line:rgba(29,26,22,.12);
+
+      /* Keep accents consistent across themes */
+      --accent:#907569;
+      --accent2:#4D4438;
+
+      --shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
       font-family:var(--font);
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(125,211,252,.12), transparent 60%),
-                  radial-gradient(900px 500px at 90% 0%, rgba(167,139,250,.10), transparent 55%),
-                  var(--bg);
+
+      /* Cleaner background: subtle, not loud */
+      background:
+        radial-gradient(900px 500px at 18% -10%, rgba(144,117,105,.14), transparent 60%),
+        radial-gradient(700px 420px at 90% 0%, rgba(185,196,206,.10), transparent 55%),
+        var(--bg);
+
       color:var(--text);
       line-height:1.5;
     }
+
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px;}
+
     header{
       position:sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
-      background: rgba(11,13,16,.75);
-      border-bottom:1px solid rgba(35,42,53,.55);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      border-bottom:1px solid var(--line);
     }
+
     .nav{
       max-width:var(--max); margin:0 auto;
       display:flex; align-items:center; justify-content:space-between;
       padding:14px 18px;
       gap: 14px;
     }
+
     .brand{font-weight:700; letter-spacing:.2px; white-space:nowrap;}
-    .links{display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:flex-end;}
-    .links a{
-      text-decoration:none; color:var(--muted);
-      padding:8px 10px; border-radius:10px;
+
+    .links{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
     }
-    .links a:hover{background:rgba(255,255,255,.04); color:var(--text)}
+
+    .links a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+      border: 1px solid transparent;
+    }
+
+    .links a:hover{
+      background: color-mix(in srgb, var(--card) 65%, transparent);
+      border-color: var(--line);
+      color:var(--text)
+    }
+
+    /* Theme toggle button */
+    .themeToggle{
+      border:1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 55%, transparent);
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font: inherit;
+      line-height: 1;
+    }
+    .themeToggle:hover{
+      background: color-mix(in srgb, var(--card) 75%, transparent);
+      color:var(--text);
+    }
+
     .hero{
       padding:48px 0 26px;
       display:grid; gap:22px;
     }
+
     .badge{
       display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px; border:1px solid rgba(35,42,53,.9);
-      background:rgba(18,21,27,.65);
-      border-radius:999px; color:var(--muted);
+      padding:8px 12px;
+      border:1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 55%, transparent);
+      border-radius:999px;
+      color:var(--muted);
       width:max-content;
     }
-    .dot{width:8px;height:8px;border-radius:50%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow:0 0 22px rgba(125,211,252,.35);
+
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--accent2)));
+      box-shadow:0 0 0 6px rgba(144,117,105,.14);
     }
-    h1{margin:0; font-size:44px; letter-spacing:-.8px; line-height:1.1}
-    .title{margin: 4px 0 0; color: var(--muted); font-size: 18px;}
+
+    h1{
+      margin:0;
+      font-size:44px;
+      letter-spacing:-.8px;
+      line-height:1.1
+    }
+
+    .title{
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
     .sub{max-width:760px; color:var(--muted); font-size:18px}
     .cta{display:flex; gap:12px; flex-wrap:wrap}
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:12px;
-      border:1px solid rgba(35,42,53,.9);
-      background:rgba(18,21,27,.8);
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 55%, transparent);
       text-decoration:none;
       color:var(--text);
       box-shadow: var(--shadow);
     }
+
     .btn.primary{
-      border: none;
-      background: linear-gradient(90deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
-      color:#0b0d10;
+      border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+      background:
+        linear-gradient(180deg,
+          color-mix(in srgb, var(--accent) 26%, transparent),
+          color-mix(in srgb, var(--card) 35%, transparent)
+        );
+      color: var(--text);
       font-weight:700;
     }
+
     .btn:hover{transform: translateY(-1px)}
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap:16px;
       margin-top:26px;
     }
+
     .card{
       grid-column: span 12;
-      background: rgba(18,21,27,.75);
-      border:1px solid rgba(35,42,53,.9);
+      background: color-mix(in srgb, var(--card) 78%, transparent);
+      border:1px solid var(--line);
       border-radius: var(--radius);
       padding:18px;
       box-shadow: var(--shadow);
     }
+
     @media (min-width: 860px){
       .card.third{grid-column: span 4}
       .card.half{grid-column: span 6}
     }
-    .kicker{color:var(--muted); text-transform:uppercase; letter-spacing:.12em; font-size:12px}
+
+    .kicker{
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:12px
+    }
+
     h2{margin:0 0 6px; font-size:22px}
     h3{margin:0 0 6px; font-size:18px}
     .muted{color:var(--muted)}
     .small{font-size:13px}
+
     .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+
     .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+
     .chip{
-      font-size:12px; color:var(--muted);
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(35,42,53,.9);
-      background: rgba(11,13,16,.35);
+      font-size:12px;
+      color:var(--muted);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 70%, transparent);
     }
+
     .section{margin-top:34px}
+
     .metric{
       font-size: 26px;
       font-weight: 800;
       letter-spacing: -.3px;
       margin: 2px 0 4px;
+      color: var(--text);
     }
+
     .twoCol{
       display:grid;
       grid-template-columns: 1fr;
       gap: 14px;
       margin-top: 10px;
     }
+
     @media (min-width: 860px){
       .twoCol{grid-template-columns: 1fr 1fr;}
     }
+
     footer{
       margin-top:40px;
       padding-top:20px;
-      border-top:1px solid rgba(35,42,53,.7);
+      border-top:1px solid var(--line);
       color:var(--muted);
       display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between;
     }
@@ -153,6 +261,11 @@
         <a href="#wins">Wins</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
+
+        <!-- Theme toggle (dark ↔ light) -->
+        <button class="themeToggle" id="themeToggle" type="button" aria-label="Toggle theme">
+          Theme
+        </button>
       </nav>
     </div>
   </header>
@@ -165,18 +278,13 @@
       <h1>Dan Hoffkins</h1>
       <div class="title">Customer Experience Operations Manager</div>
 
-      <!-- Option C phrasing, grounded + leadership -->
       <p class="sub">
         Getting the right people in the right queues, measuring what actually matters, and coaching teams to consistently improve CSAT.
       </p>
 
       <div class="cta">
         <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">Email me</a>
-
-        <!-- TODO: replace href with your hosted PDF path (e.g. /Dan-Hoffkins-Resume.pdf) -->
         <a class="btn" href="./Daniel-Hoffkins-Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
-
-        <!-- TODO: paste your LinkedIn URL -->
         <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
     </section>
@@ -334,7 +442,7 @@
       </div>
 
       <p class="muted small" style="margin-top:10px;">
-        (These highlights reflect accomplishments across roles in healthcare and SaaS environments.) 
+        (These highlights reflect accomplishments across roles in healthcare and SaaS environments.)
       </p>
     </section>
 
@@ -389,7 +497,6 @@
 
           <div class="cta">
             <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">daniel.hoffkins@gmail.com</a>
-            <!-- TODO: paste your LinkedIn URL -->
             <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
@@ -403,7 +510,22 @@
   </main>
 
   <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Theme toggle (persists)
+    const key = "theme";
+    const btn = document.getElementById("themeToggle");
+    const saved = localStorage.getItem(key);
+
+    // Default is dark. If saved is "light", set light.
+    if (saved === "light") document.documentElement.dataset.theme = "light";
+
+    btn.addEventListener("click", () => {
+      const isLight = document.documentElement.dataset.theme === "light";
+      document.documentElement.dataset.theme = isLight ? "" : "light";
+      localStorage.setItem(key, isLight ? "dark" : "light");
+    });
   </script>
 </body>
 </html>
