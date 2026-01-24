@@ -52,6 +52,8 @@
         radial-gradient(900px 560px at 10% -10%, rgba(255,184,107,.18), transparent 62%),
         radial-gradient(740px 460px at 90% 0%, rgba(118,179,255,.16), transparent 60%),
         radial-gradient(520px 380px at 40% 18%, rgba(109,224,181,.12), transparent 60%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 110px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 110px),
         linear-gradient(180deg, var(--bg), var(--bg2));
       background-attachment: fixed;
       color:var(--text);
@@ -320,6 +322,75 @@
       animation: sparkDraw 1.6s ease both;
     }
 
+    .signal{
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent2) 14%, transparent), var(--card));
+      position:relative;
+      overflow:hidden;
+    }
+    .signal::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(120deg, transparent 0%, rgba(118,179,255,.16) 50%, transparent 100%);
+      transform: translateX(-100%);
+      animation: scan 3.6s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .signalTop{
+      display:flex;
+      justify-content:space-between;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .ringWrap{
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .ring{
+      --val: 72%;
+      width: 90px;
+      height: 90px;
+      border-radius: 999px;
+      background: conic-gradient(var(--accent2) 0 var(--val), rgba(255,255,255,.1) var(--val) 100%);
+      display:grid;
+      place-items:center;
+      position:relative;
+      box-shadow: var(--glow);
+    }
+    .ring::after{
+      content:"";
+      position:absolute;
+      width: 66px;
+      height: 66px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+    }
+    .ring span,
+    .ring small{
+      position:relative;
+      z-index:1;
+      display:block;
+      text-align:center;
+    }
+    .ring span{
+      font-weight: 800;
+      font-size: 18px;
+    }
+    .ring small{
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
     /* Mini “KPI dial” */
     .dialWrap{
       display:flex;
@@ -473,6 +544,33 @@
     .step b{ display:block; margin-bottom: 4px; }
     .step .small{ display:block; }
 
+    .storyLead{
+      font-size: 18px;
+      color: var(--muted);
+    }
+    .timeline{
+      margin-top: 14px;
+      display:grid;
+      gap: 12px;
+    }
+    .timelineItem{
+      display:flex;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .timelineItem .year{
+      min-width: 70px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .timelineItem .role{
+      font-weight: 600;
+    }
+
     .principle{
       position:relative;
       overflow:hidden;
@@ -548,6 +646,11 @@
       0%,100%{ transform: translateY(0); }
       50%{ transform: translateY(14px); }
     }
+    @keyframes scan{
+      0%{ transform: translateX(-100%); }
+      60%{ transform: translateX(120%); }
+      100%{ transform: translateX(120%); }
+    }
 
     @media (prefers-reduced-motion: reduce){
       *{ animation: none !important; transition: none !important; }
@@ -563,6 +666,7 @@
       <div class="brand">Dan Hoffkins</div>
       <nav class="links">
         <a href="#impact">Impact</a>
+        <a href="#story">Story</a>
         <a href="#proof">Proof</a>
         <a href="#work">Work</a>
         <a href="#ops">How I Operate</a>
@@ -591,7 +695,7 @@
 
       <div class="cta fadeUp delay3">
         <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">Email</a>
-        <a class="btn" href="./Dan-Hoffkins-Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
+        <a class="btn" href="./daniel-hoffkins-resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
         <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
 
@@ -673,9 +777,66 @@
             <b>Right now</b>
             <span class="small">Building calm, scalable support systems for fast-moving teams.</span>
           </div>
+          <div class="signal">
+            <div class="signalTop"><span>Live signal</span><span>Ops health</span></div>
+            <div class="ringWrap">
+              <div class="ring" style="--val:72%">
+                <span>72</span>
+                <small>Health</small>
+              </div>
+              <div class="ring" style="--val:88%">
+                <span>88</span>
+                <small>Coverage</small>
+              </div>
+            </div>
+          </div>
           <div class="cta" style="margin-top:14px;">
             <a class="btn" href="#work">See case studies</a>
             <a class="btn" href="#contact">Reach out</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section id="story" class="section">
+      <div class="kicker">Story</div>
+      <h2>Human leadership, operational clarity.</h2>
+
+      <div class="grid stagger">
+        <div class="card span6">
+          <p class="storyLead">I lead with clarity and warmth, especially when teams are under pressure.</p>
+          <p class="muted" style="margin-top:10px;">
+            My goal is to make support feel predictable: crisp ownership, reliable cadence, and visible wins that keep people motivated.
+          </p>
+          <p class="muted" style="margin-top:10px;">
+            I focus on coaching and systems that reduce noise while keeping the human experience front and center.
+          </p>
+        </div>
+        <div class="card span6">
+          <div class="kicker">Trajectory</div>
+          <div class="timeline">
+            <div class="timelineItem">
+              <div class="year">2013-2016</div>
+              <div>
+                <div class="role">Frontline to Lead</div>
+                <div class="small">Built support foundations and coached new teams.</div>
+              </div>
+            </div>
+            <div class="timelineItem">
+              <div class="year">2017-2020</div>
+              <div>
+                <div class="role">Ops Builder</div>
+                <div class="small">Scaled tooling, QA, and staffing models for growing orgs.</div>
+              </div>
+            </div>
+            <div class="timelineItem">
+              <div class="year">2021-Now</div>
+              <div>
+                <div class="role">CX Ops Leader</div>
+                <div class="small">Drove KPI cadence, incident response, and leadership enablement.</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
