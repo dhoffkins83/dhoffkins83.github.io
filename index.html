@@ -7,41 +7,41 @@
   <meta name="description" content="Dan Hoffkins — Customer Experience Operations Manager. Workforce optimization, metrics that matter, and team leadership that improves CSAT." />
 
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap");
 
     :root{
-      /* Tech-forward, warm, human */
-      --bg:#0f1115;
-      --bg2:#141a20;
-      --card: rgba(255,255,255,.05);
-      --card2: rgba(255,255,255,.08);
-      --text:#f5f5f5;
-      --muted: rgba(245,245,245,.72);
-      --line: rgba(245,245,245,.12);
+      /* Warm, story-driven */
+      --bg:#f8f2ec;
+      --bg2:#ffffff;
+      --card: rgba(24,20,16,.04);
+      --card2: rgba(24,20,16,.07);
+      --text:#1a1612;
+      --muted: rgba(26,22,18,.64);
+      --line: rgba(26,22,18,.12);
 
-      --accent:#ffb86b;  /* warm amber */
-      --accent2:#76b3ff; /* tech blue */
-      --accent3:#6de0b5; /* human mint */
+      --accent:#e07a5f;  /* terracotta */
+      --accent2:#3d8a8f; /* gentle teal */
+      --accent3:#f2c078; /* soft gold */
 
-      --shadow: 0 18px 60px rgba(0,0,0,.38);
-      --glow: 0 0 0 1px rgba(118,179,255,.12), 0 16px 50px rgba(118,179,255,.16);
+      --shadow: 0 16px 45px rgba(26,22,18,.15);
+      --glow: 0 0 0 1px rgba(224,122,95,.18), 0 16px 40px rgba(224,122,95,.12);
       --radius:18px;
       --max: 1080px;
 
-      --font: "Space Grotesk", "Manrope", "Segoe UI", sans-serif;
+      --font: "Work Sans", "Segoe UI", sans-serif;
       --serif: "Fraunces", "Iowan Old Style", serif;
     }
 
     html[data-theme="light"]{
-      --bg:#f6f4f0;
+      --bg:#f8f2ec;
       --bg2:#ffffff;
-      --card: rgba(16,19,24,.05);
-      --card2: rgba(16,19,24,.08);
-      --text:#0f1115;
-      --muted: rgba(16,19,24,.68);
-      --line: rgba(16,19,24,.12);
-      --shadow: 0 18px 60px rgba(0,0,0,.12);
-      --glow: 0 0 0 1px rgba(118,179,255,.18), 0 16px 50px rgba(16,19,24,.1);
+      --card: rgba(24,20,16,.04);
+      --card2: rgba(24,20,16,.07);
+      --text:#1a1612;
+      --muted: rgba(26,22,18,.64);
+      --line: rgba(26,22,18,.12);
+      --shadow: 0 16px 45px rgba(26,22,18,.15);
+      --glow: 0 0 0 1px rgba(224,122,95,.18), 0 16px 40px rgba(224,122,95,.12);
     }
 
     *{box-sizing:border-box}
@@ -49,9 +49,9 @@
       margin:0;
       font-family:var(--font);
       background:
-        radial-gradient(900px 560px at 10% -10%, rgba(255,184,107,.18), transparent 62%),
-        radial-gradient(740px 460px at 90% 0%, rgba(118,179,255,.16), transparent 60%),
-        radial-gradient(520px 380px at 40% 18%, rgba(109,224,181,.12), transparent 60%),
+        radial-gradient(860px 520px at 10% -10%, rgba(224,122,95,.18), transparent 62%),
+        radial-gradient(700px 460px at 92% 0%, rgba(61,138,143,.14), transparent 60%),
+        radial-gradient(480px 360px at 42% 18%, rgba(242,192,120,.12), transparent 60%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       background-attachment: fixed;
       color:var(--text);
@@ -93,7 +93,7 @@
       font-weight: 780;
       letter-spacing: .2px;
       white-space: nowrap;
-      background: linear-gradient(90deg, var(--text), color-mix(in srgb, var(--accent2) 45%, var(--text)));
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent2) 35%, var(--text)));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -167,7 +167,7 @@
 
     /* Typography + spacing */
     .kicker{
-      color: color-mix(in srgb, var(--accent3) 65%, var(--muted));
+      color: color-mix(in srgb, var(--accent) 55%, var(--muted));
       text-transform: uppercase;
       letter-spacing: .12em;
       font-size: 12px;
@@ -237,13 +237,13 @@
     .hero::before{
       width: 380px; height: 380px;
       right: -80px; top:-80px;
-      background: radial-gradient(circle, rgba(118,179,255,.26), transparent 70%);
+      background: radial-gradient(circle, rgba(61,138,143,.24), transparent 70%);
       animation: float 10s ease-in-out infinite;
     }
     .hero::after{
       width: 320px; height: 320px;
       left: -60px; bottom:-120px;
-      background: radial-gradient(circle, rgba(255,184,107,.22), transparent 70%);
+      background: radial-gradient(circle, rgba(224,122,95,.22), transparent 70%);
       animation: float 12s ease-in-out infinite reverse;
     }
     .pill{
@@ -261,7 +261,7 @@
     .dot{
       width: 9px; height: 9px; border-radius: 50%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(199,160,122,.12);
+      box-shadow: 0 0 0 6px rgba(224,122,95,.14);
     }
     .subhead{
       margin-top: 10px;
@@ -473,6 +473,33 @@
     .step b{ display:block; margin-bottom: 4px; }
     .step .small{ display:block; }
 
+    .storyLead{
+      font-size: 18px;
+      color: var(--muted);
+    }
+    .timeline{
+      margin-top: 14px;
+      display:grid;
+      gap: 12px;
+    }
+    .timelineItem{
+      display:flex;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .timelineItem .year{
+      min-width: 70px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .timelineItem .role{
+      font-weight: 600;
+    }
+
     .principle{
       position:relative;
       overflow:hidden;
@@ -563,6 +590,7 @@
       <div class="brand">Dan Hoffkins</div>
       <nav class="links">
         <a href="#impact">Impact</a>
+        <a href="#story">Story</a>
         <a href="#proof">Proof</a>
         <a href="#work">Work</a>
         <a href="#ops">How I Operate</a>
@@ -591,7 +619,7 @@
 
       <div class="cta fadeUp delay3">
         <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">Email</a>
-        <a class="btn" href="./Dan-Hoffkins-Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
+        <a class="btn" href="./daniel-hoffkins-resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
         <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
 
@@ -676,6 +704,50 @@
           <div class="cta" style="margin-top:14px;">
             <a class="btn" href="#work">See case studies</a>
             <a class="btn" href="#contact">Reach out</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section id="story" class="section">
+      <div class="kicker">Story</div>
+      <h2>Human leadership, operational clarity.</h2>
+
+      <div class="grid stagger">
+        <div class="card span6">
+          <p class="storyLead">I’m at my best when teams are under pressure and need calm, confident leadership.</p>
+          <p class="muted" style="margin-top:10px;">
+            My focus is simple: create rhythm, remove confusion, and build support systems that let people do their best work without burnout.
+          </p>
+          <p class="muted" style="margin-top:10px;">
+            I care deeply about the human side of operations — coaching, clarity, and the trust that makes change stick.
+          </p>
+        </div>
+        <div class="card span6">
+          <div class="kicker">Trajectory</div>
+          <div class="timeline">
+            <div class="timelineItem">
+              <div class="year">2013-2016</div>
+              <div>
+                <div class="role">Frontline to Lead</div>
+                <div class="small">Built support foundations and coached new teams.</div>
+              </div>
+            </div>
+            <div class="timelineItem">
+              <div class="year">2017-2020</div>
+              <div>
+                <div class="role">Ops Builder</div>
+                <div class="small">Scaled tooling, QA, and staffing models for growing orgs.</div>
+              </div>
+            </div>
+            <div class="timelineItem">
+              <div class="year">2021-Now</div>
+              <div>
+                <div class="role">CX Ops Leader</div>
+                <div class="small">Drove KPI cadence, incident response, and leadership enablement.</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
