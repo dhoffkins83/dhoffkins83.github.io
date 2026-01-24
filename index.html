@@ -7,36 +7,41 @@
   <meta name="description" content="Dan Hoffkins — Customer Experience Operations Manager. Workforce optimization, metrics that matter, and team leadership that improves CSAT." />
 
   <style>
-    :root{
-      /* Dark, warm, calm (premium ops vibe) */
-      --bg:#14110f;
-      --bg2:#1b1714;
-      --card: rgba(255,255,255,.04);
-      --card2: rgba(255,255,255,.06);
-      --text:#f2f2f2;
-      --muted: rgba(242,242,242,.72);
-      --line: rgba(242,242,242,.12);
+    @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
-      --accent:#c7a07a;  /* warm sand */
-      --accent2:#8fa7c3; /* cool steel */
+    :root{
+      /* Tech-forward, warm, human */
+      --bg:#0f1115;
+      --bg2:#141a20;
+      --card: rgba(255,255,255,.05);
+      --card2: rgba(255,255,255,.08);
+      --text:#f5f5f5;
+      --muted: rgba(245,245,245,.72);
+      --line: rgba(245,245,245,.12);
+
+      --accent:#ffb86b;  /* warm amber */
+      --accent2:#76b3ff; /* tech blue */
+      --accent3:#6de0b5; /* human mint */
 
       --shadow: 0 18px 60px rgba(0,0,0,.38);
+      --glow: 0 0 0 1px rgba(118,179,255,.12), 0 16px 50px rgba(118,179,255,.16);
       --radius:18px;
       --max: 1080px;
 
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --font: "Space Grotesk", "Manrope", "Segoe UI", sans-serif;
+      --serif: "Fraunces", "Iowan Old Style", serif;
     }
 
     html[data-theme="light"]{
-      --bg:#f2f2f2;
+      --bg:#f6f4f0;
       --bg2:#ffffff;
-      --card: rgba(20,17,15,.045);
-      --card2: rgba(20,17,15,.07);
-      --text:#14110f;
-      --muted: rgba(20,17,15,.68);
-      --line: rgba(20,17,15,.12);
+      --card: rgba(16,19,24,.05);
+      --card2: rgba(16,19,24,.08);
+      --text:#0f1115;
+      --muted: rgba(16,19,24,.68);
+      --line: rgba(16,19,24,.12);
       --shadow: 0 18px 60px rgba(0,0,0,.12);
+      --glow: 0 0 0 1px rgba(118,179,255,.18), 0 16px 50px rgba(16,19,24,.1);
     }
 
     *{box-sizing:border-box}
@@ -44,18 +49,34 @@
       margin:0;
       font-family:var(--font);
       background:
-        radial-gradient(920px 560px at 16% -10%, rgba(199,160,122,.18), transparent 62%),
-        radial-gradient(760px 460px at 92% 0%, rgba(143,167,195,.14), transparent 60%),
+        radial-gradient(900px 560px at 10% -10%, rgba(255,184,107,.18), transparent 62%),
+        radial-gradient(740px 460px at 90% 0%, rgba(118,179,255,.16), transparent 60%),
+        radial-gradient(520px 380px at 40% 18%, rgba(109,224,181,.12), transparent 60%),
         linear-gradient(180deg, var(--bg), var(--bg2));
+      background-attachment: fixed;
       color:var(--text);
       line-height:1.55;
     }
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding: 28px 18px 80px;}
 
+    .skip-link{
+      position:absolute;
+      left:14px;
+      top:-40px;
+      background: var(--card2);
+      border:1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 10px;
+      z-index: 40;
+      text-decoration:none;
+    }
+    .skip-link:focus{ top:14px; }
+
     header{
       position:sticky; top:0; z-index:20;
       backdrop-filter: blur(10px);
+      background: rgba(15,17,21,.78);
       background: color-mix(in srgb, var(--bg) 78%, transparent);
       border-bottom:1px solid var(--line);
     }
@@ -72,6 +93,10 @@
       font-weight: 780;
       letter-spacing: .2px;
       white-space: nowrap;
+      background: linear-gradient(90deg, var(--text), color-mix(in srgb, var(--accent2) 45%, var(--text)));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
     .links{
       display:flex;
@@ -102,9 +127,47 @@
     }
     .themeToggle:hover{ background: var(--card2); color: var(--text); }
 
+    .progress{
+      height: 3px;
+      background: rgba(0,0,0,0);
+      border-top: 1px solid var(--line);
+    }
+    .progress > span{
+      display:block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent3), var(--accent2));
+      box-shadow: 0 0 14px rgba(118,179,255,.45);
+      transition: width .15s ease;
+    }
+
+    .backTop{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card2) 80%, transparent);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index: 30;
+    }
+    .backTop.is-visible{
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
     /* Typography + spacing */
     .kicker{
-      color: var(--muted);
+      color: color-mix(in srgb, var(--accent3) 65%, var(--muted));
       text-transform: uppercase;
       letter-spacing: .12em;
       font-size: 12px;
@@ -127,6 +190,7 @@
     .section{
       padding: 34px 0;
       border-bottom: 1px solid var(--line);
+      scroll-margin-top: 90px;
     }
 
     /* Layout */
@@ -156,6 +220,31 @@
     .hero{
       padding: 46px 0 22px;
       border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow:hidden;
+    }
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto;
+      border-radius: 999px;
+      filter: blur(12px);
+      opacity:.5;
+      z-index:0;
+      pointer-events:none;
+    }
+    .hero::before{
+      width: 380px; height: 380px;
+      right: -80px; top:-80px;
+      background: radial-gradient(circle, rgba(118,179,255,.26), transparent 70%);
+      animation: float 10s ease-in-out infinite;
+    }
+    .hero::after{
+      width: 320px; height: 320px;
+      left: -60px; bottom:-120px;
+      background: radial-gradient(circle, rgba(255,184,107,.22), transparent 70%);
+      animation: float 12s ease-in-out infinite reverse;
     }
     .pill{
       display:inline-flex;
@@ -201,10 +290,11 @@
     .btn.primary{
       border-color: color-mix(in srgb, var(--accent) 55%, transparent);
       background: linear-gradient(180deg,
-        color-mix(in srgb, var(--accent) 22%, transparent),
+        color-mix(in srgb, var(--accent) 26%, transparent),
         var(--card)
       );
       font-weight: 750;
+      box-shadow: var(--glow);
     }
 
     /* Dashboard stats */
@@ -225,6 +315,9 @@
     .spark{
       width: 120px; height: 34px;
       opacity: .95;
+    }
+    .spark path{
+      animation: sparkDraw 1.6s ease both;
     }
 
     /* Mini “KPI dial” */
@@ -277,6 +370,40 @@
       background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 85%, transparent), color-mix(in srgb, var(--accent2) 70%, transparent));
       border-radius: 999px;
     }
+
+    .caseCard{
+      position:relative;
+      overflow:hidden;
+    }
+    .caseCard::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(118,179,255,.18), transparent 60%);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .caseCard .meta{
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .02em;
+    }
+    .caseLink{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 13px;
+      text-decoration:none;
+      color: color-mix(in srgb, var(--accent2) 70%, var(--text));
+    }
+    .caseLink::after{
+      content:"→";
+      display:inline-block;
+      transition: transform .15s ease;
+    }
+    .caseLink:hover::after{ transform: translateX(3px); }
 
     /* Collapsible case studies */
     details{
@@ -346,6 +473,60 @@
     .step b{ display:block; margin-bottom: 4px; }
     .step .small{ display:block; }
 
+    .principle{
+      position:relative;
+      overflow:hidden;
+    }
+    .principle .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card2) 70%, transparent);
+      font-size: 12px;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+    .principle::after{
+      content:"";
+      position:absolute;
+      width: 120px; height: 120px;
+      right:-40px; top:-40px;
+      background: radial-gradient(circle, rgba(109,224,181,.18), transparent 70%);
+      pointer-events:none;
+    }
+
+    .now{
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent2) 12%, transparent), var(--card));
+    }
+    .now b{ display:block; margin-bottom: 4px; }
+
+    .stagger > *{
+      animation: fadeUp .7s ease both;
+    }
+    .stagger > *:nth-child(2){ animation-delay: .08s; }
+    .stagger > *:nth-child(3){ animation-delay: .16s; }
+    .stagger > *:nth-child(4){ animation-delay: .24s; }
+    .stagger > *:nth-child(5){ animation-delay: .32s; }
+
+    .fadeUp{ animation: fadeUp .7s ease both; }
+    .fadeUp.delay1{ animation-delay: .08s; }
+    .fadeUp.delay2{ animation-delay: .16s; }
+    .fadeUp.delay3{ animation-delay: .24s; }
+
+    a:focus-visible,
+    button:focus-visible{
+      outline: 2px solid color-mix(in srgb, var(--accent2) 70%, transparent);
+      outline-offset: 2px;
+      border-radius: 12px;
+    }
+
     footer{
       padding-top: 22px;
       color: var(--muted);
@@ -354,21 +535,45 @@
       flex-wrap:wrap;
       gap: 10px;
     }
+
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    @keyframes sparkDraw{
+      from{ stroke-dasharray: 200; stroke-dashoffset: 200; }
+      to{ stroke-dasharray: 200; stroke-dashoffset: 0; }
+    }
+    @keyframes float{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(14px); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; }
+      body{ background-attachment: scroll; }
+    }
   </style>
 </head>
 
-<body>
+  <body id="top">
+  <a class="skip-link" href="#impact">Skip to content</a>
   <header>
     <div class="nav">
       <div class="brand">Dan Hoffkins</div>
       <nav class="links">
         <a href="#impact">Impact</a>
+        <a href="#proof">Proof</a>
         <a href="#work">Work</a>
         <a href="#ops">How I Operate</a>
+        <a href="#principles">Principles</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
         <button class="themeToggle" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
       </nav>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Scroll progress" aria-valuemin="0" aria-valuemax="100">
+      <span id="progressBar"></span>
     </div>
   </header>
 
@@ -376,21 +581,21 @@
 
     <!-- HERO (sell outcomes first) -->
     <section class="hero">
-      <div class="pill"><span class="dot"></span> CX Ops • Support Ops • Workforce • Leadership</div>
+      <div class="pill fadeUp"><span class="dot"></span> CX Ops • Support Ops • Workforce • Leadership</div>
 
-      <h1>Customer Experience Ops that feels calm — even at scale.</h1>
+      <h1 class="fadeUp delay1">Customer Experience Ops that feels calm — even at scale.</h1>
 
-      <p class="subhead">
+      <p class="subhead fadeUp delay2">
         I’m Dan Hoffkins. I build predictable support systems: queue health, staffing alignment, KPI clarity, and coaching loops that move CSAT.
       </p>
 
-      <div class="cta">
+      <div class="cta fadeUp delay3">
         <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">Email</a>
         <a class="btn" href="./Dan-Hoffkins-Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
         <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
 
-      <div class="grid" style="margin-top:18px;">
+      <div class="grid stagger" style="margin-top:18px; position:relative; z-index:1;">
         <div class="card span7">
           <div class="kicker">Impact dashboard</div>
 
@@ -399,7 +604,7 @@
               <b>+20%</b>
               <div class="small">CSAT / NPS lift (blended internal + BPO)</div>
             </div>
-            <svg class="spark" viewBox="0 0 120 34" fill="none">
+            <svg class="spark" viewBox="0 0 120 34" fill="none" aria-hidden="true" focusable="false">
               <path d="M2 28 C16 26, 18 14, 28 18 C38 22, 44 8, 56 12 C66 16, 72 6, 84 10 C96 14, 104 6, 118 6" stroke="currentColor" stroke-width="2" opacity=".35"/>
               <path d="M2 28 C16 26, 18 14, 28 18 C38 22, 44 8, 56 12 C66 16, 72 6, 84 10 C96 14, 104 6, 118 6" stroke="url(#g1)" stroke-width="2.8" />
               <defs>
@@ -416,7 +621,7 @@
               <b>-80%</b>
               <div class="small">Urgent issue response time (incident motion)</div>
             </div>
-            <svg class="spark" viewBox="0 0 120 34" fill="none">
+            <svg class="spark" viewBox="0 0 120 34" fill="none" aria-hidden="true" focusable="false">
               <path d="M2 6 C18 8, 26 10, 36 12 C48 14, 56 16, 66 18 C76 20, 86 22, 96 24 C106 26, 110 28, 118 28" stroke="url(#g2)" stroke-width="2.8"/>
               <defs>
                 <linearGradient id="g2" x1="0" y1="0" x2="120" y2="0">
@@ -432,7 +637,7 @@
               <b>-50%</b>
               <div class="small">Manual coordination reduced (ops workflows + docs)</div>
             </div>
-            <svg class="spark" viewBox="0 0 120 34" fill="none">
+            <svg class="spark" viewBox="0 0 120 34" fill="none" aria-hidden="true" focusable="false">
               <path d="M2 10 C16 12, 28 18, 40 16 C54 14, 64 22, 76 20 C90 18, 102 26, 118 26" stroke="url(#g3)" stroke-width="2.8"/>
               <defs>
                 <linearGradient id="g3" x1="0" y1="0" x2="120" y2="0">
@@ -464,6 +669,10 @@
             I do my best work when things are messy: stressed queues, unclear ownership, inconsistent workflows, noisy data.
             I bring structure, clarity, and coaching that sticks.
           </p>
+          <div class="now">
+            <b>Right now</b>
+            <span class="small">Building calm, scalable support systems for fast-moving teams.</span>
+          </div>
           <div class="cta" style="margin-top:14px;">
             <a class="btn" href="#work">See case studies</a>
             <a class="btn" href="#contact">Reach out</a>
@@ -480,7 +689,7 @@
         I focus on outcomes: predictable coverage, cleaner queues, better escalation hygiene, and KPIs that drive behavior—not just reporting.
       </p>
 
-      <div class="grid">
+      <div class="grid stagger">
         <div class="card span4">
           <div class="kicker">Queue health</div>
           <h3>Backlog ↓, predictability ↑</h3>
@@ -495,6 +704,37 @@
           <div class="kicker">Leadership</div>
           <h3>Coaching loops that scale</h3>
           <p class="muted">Consistent expectations + manager enablement so performance doesn’t depend on one great lead.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF STRIP -->
+    <section id="proof" class="section">
+      <div class="kicker">Proof</div>
+      <h2>Small stories, big leverage</h2>
+      <p class="muted" style="max-width:78ch;">Short snapshots of how I move teams from chaos to calm.</p>
+
+      <div class="grid stagger">
+        <div class="card span4 caseCard">
+          <div class="kicker">WFM + routing</div>
+          <h3>Cut backlog without heroics</h3>
+          <p class="muted">Rebalanced queues, tightened routing rules, and added live health reporting for faster triage.</p>
+          <div class="meta">Impact: predictable coverage, fewer escalations</div>
+          <a class="caseLink" href="#work">How I did it</a>
+        </div>
+        <div class="card span4 caseCard">
+          <div class="kicker">KPI cadence</div>
+          <h3>Turned metrics into coaching</h3>
+          <p class="muted">Built a small KPI set with weekly reviews that created clear expectations and movement.</p>
+          <div class="meta">Impact: CSAT/NPS lift in blended teams</div>
+          <a class="caseLink" href="#work">How I did it</a>
+        </div>
+        <div class="card span4 caseCard">
+          <div class="kicker">Incident motion</div>
+          <h3>Faster response under pressure</h3>
+          <p class="muted">Defined escalation paths, built SOPs, and aligned a 24/7 ownership model.</p>
+          <div class="meta">Impact: urgent issue response time ↓</div>
+          <a class="caseLink" href="#work">How I did it</a>
         </div>
       </div>
     </section>
@@ -624,7 +864,7 @@
         This is the loop I run to turn “support feels chaotic” into “support feels predictable.”
       </p>
 
-      <div class="flow">
+      <div class="flow stagger">
         <div class="step">
           <b>1) Diagnose</b>
           <span class="small">Queue health, volume patterns, SLA misses, top drivers</span>
@@ -644,12 +884,39 @@
       </div>
     </section>
 
+    <!-- PRINCIPLES -->
+    <section id="principles" class="section">
+      <div class="kicker">Principles</div>
+      <h2>Leadership that scales without burnout</h2>
+      <p class="muted" style="max-width:78ch;">
+        I aim for calm, clarity, and ownership — so teams can move fast without chaos.
+      </p>
+
+      <div class="grid stagger">
+        <div class="card span4 principle">
+          <div class="badge">01</div>
+          <h3>Clarity over heroics</h3>
+          <p class="muted">I replace fire drills with simple rituals, clear ownership, and visibility into what matters.</p>
+        </div>
+        <div class="card span4 principle">
+          <div class="badge">02</div>
+          <h3>People-first, system-smart</h3>
+          <p class="muted">Tools should serve the team. I design workflows that respect cognitive load and build trust.</p>
+        </div>
+        <div class="card span4 principle">
+          <div class="badge">03</div>
+          <h3>Measure to improve</h3>
+          <p class="muted">Metrics are for coaching and clarity, not surveillance — the goal is better outcomes and happier teams.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- SKILLS (visual bars instead of chip soup) -->
     <section id="skills" class="section">
       <div class="kicker">Skills</div>
       <h2>What I’m strong at</h2>
 
-      <div class="grid">
+      <div class="grid stagger">
         <div class="card span6">
           <h3>Leadership & Ops</h3>
 
@@ -727,6 +994,8 @@
 
   </main>
 
+  <a class="backTop" id="backTop" href="#top">Back to top ↑</a>
+
   <script>
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -734,14 +1003,55 @@
     // Theme toggle (persists)
     const key = "theme";
     const btn = document.getElementById("themeToggle");
+    const root = document.documentElement;
+
+    const setTheme = (mode) => {
+      root.dataset.theme = mode === "light" ? "light" : "";
+      const isLight = root.dataset.theme === "light";
+      btn.setAttribute("aria-pressed", String(isLight));
+      btn.textContent = isLight ? "Theme: Light" : "Theme: Dark";
+      localStorage.setItem(key, isLight ? "light" : "dark");
+    };
+
     const saved = localStorage.getItem(key);
-    if (saved === "light") document.documentElement.dataset.theme = "light";
+    setTheme(saved === "light" ? "light" : "dark");
 
     btn.addEventListener("click", () => {
-      const isLight = document.documentElement.dataset.theme === "light";
-      document.documentElement.dataset.theme = isLight ? "" : "light";
-      localStorage.setItem(key, isLight ? "dark" : "light");
+      setTheme(root.dataset.theme === "light" ? "dark" : "light");
     });
+
+    // Scroll progress
+    const bar = document.getElementById("progressBar");
+    const barWrap = bar?.parentElement;
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const value = max > 0 ? Math.min(100, Math.max(0, (doc.scrollTop / max) * 100)) : 0;
+      if (bar) bar.style.width = value.toFixed(1) + "%";
+      if (barWrap) barWrap.setAttribute("aria-valuenow", value.toFixed(0));
+    };
+
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateProgress();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+
+    // Back to top pill
+    const backTop = document.getElementById("backTop");
+    const toggleBackTop = () => {
+      if (!backTop) return;
+      backTop.classList.toggle("is-visible", window.scrollY > 420);
+    };
+    window.addEventListener("scroll", toggleBackTop);
+    toggleBackTop();
   </script>
 </body>
 </html>
