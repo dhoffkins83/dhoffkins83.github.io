@@ -1,0 +1,30 @@
+name: Branch previews
+
+on:
+  push:
+    branches:
+      - "vibe-*"
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Prepare preview
+        run: |
+          BRANCH="${GITHUB_REF##*/}"
+          mkdir -p public/"$BRANCH"
+          rsync -av --exclude ".git" --exclude ".github" ./ public/"$BRANCH"/
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: public
+          keep_files: true
