@@ -275,13 +275,20 @@
       box-shadow: var(--shadow);
       background: var(--card2);
       flex: 0 0 auto;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
     .headshot img{
       width: 100%;
       height: 100%;
       object-fit: cover;
       display:block;
+      transition: transform .2s ease;
     }
+    .headshot:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--glow);
+    }
+    .headshot:hover img{ transform: scale(1.03); }
     .headshotMeta{
       display:flex;
       flex-direction:column;
@@ -289,6 +296,26 @@
     }
     .headshotMeta b{ font-size: 15px; }
     .headshotMeta .small{ font-size: 12px; }
+
+    .portrait{
+      display:grid;
+      gap: 16px;
+      align-items:center;
+    }
+    .portraitFrame{
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      background: var(--card2);
+      box-shadow: var(--shadow);
+      aspect-ratio: 1 / 1;
+    }
+    .portraitFrame img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+    }
     .dot{
       width: 9px; height: 9px; border-radius: 50%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
@@ -877,6 +904,28 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTRAIT -->
+    <section id="portrait" class="section">
+      <div class="kicker">Portrait</div>
+      <h2>Warm, steady leadership.</h2>
+      <div class="grid stagger">
+        <div class="card span6 portrait">
+          <div class="portraitFrame">
+            <img src="./assets/dan-headshot.jpg" alt="Dan Hoffkins portrait" />
+          </div>
+        </div>
+        <div class="card span6">
+          <h3>How I show up</h3>
+          <p class="muted">
+            Calm under pressure, clear with priorities, and focused on outcomes that make teams feel supported.
+          </p>
+          <p class="muted" style="margin-top:10px;">
+            I believe modern CX Ops is equal parts systems design and human leadership.
+          </p>
         </div>
       </div>
     </section>
