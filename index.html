@@ -260,6 +260,35 @@
       width: fit-content;
       font-size: 13px;
     }
+    .headshotWrap{
+      margin-top: 14px;
+      display:flex;
+      align-items:center;
+      gap: 14px;
+    }
+    .headshot{
+      width: 82px;
+      height: 82px;
+      border-radius: 20px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: var(--card2);
+      flex: 0 0 auto;
+    }
+    .headshot img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+    }
+    .headshotMeta{
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+    }
+    .headshotMeta b{ font-size: 15px; }
+    .headshotMeta .small{ font-size: 12px; }
     .dot{
       width: 9px; height: 9px; border-radius: 50%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
@@ -693,7 +722,17 @@
         I’m Dan Hoffkins. I build predictable support systems: queue health, staffing alignment, KPI clarity, and coaching loops that move CSAT.
       </p>
 
-      <div class="cta fadeUp delay3">
+      <div class="headshotWrap fadeUp delay3">
+        <div class="headshot">
+          <img src="./assets/dan-headshot.jpg" alt="Dan Hoffkins headshot" />
+        </div>
+        <div class="headshotMeta">
+          <b>Dan Hoffkins</b>
+          <span class="small">CX Ops leader • Systems + people • Calm at scale</span>
+        </div>
+      </div>
+
+      <div class="cta fadeUp delay3" style="margin-top:12px;">
         <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">Email</a>
         <a class="btn" href="./Daniel-Hoffkins-Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
         <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
