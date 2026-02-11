@@ -32,6 +32,10 @@
       --serif: "Fraunces", "Iowan Old Style", serif;
     }
 
+    html{
+      scroll-behavior: smooth;
+    }
+
     html[data-theme="light"]{
       --bg:#f6f4f0;
       --bg2:#ffffff;
@@ -297,25 +301,6 @@
     .headshotMeta b{ font-size: 15px; }
     .headshotMeta .small{ font-size: 12px; }
 
-    .portrait{
-      display:grid;
-      gap: 16px;
-      align-items:center;
-    }
-    .portraitFrame{
-      border-radius: 22px;
-      overflow:hidden;
-      border: 1px solid var(--line);
-      background: var(--card2);
-      box-shadow: var(--shadow);
-      aspect-ratio: 1 / 1;
-    }
-    .portraitFrame img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display:block;
-    }
     .dot{
       width: 9px; height: 9px; border-radius: 50%;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
@@ -378,74 +363,6 @@
       animation: sparkDraw 1.6s ease both;
     }
 
-    .signal{
-      margin-top: 16px;
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, color-mix(in srgb, var(--accent2) 14%, transparent), var(--card));
-      position:relative;
-      overflow:hidden;
-    }
-    .signal::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(120deg, transparent 0%, rgba(118,179,255,.16) 50%, transparent 100%);
-      transform: translateX(-100%);
-      animation: scan 3.6s ease-in-out infinite;
-      pointer-events:none;
-    }
-    .signalTop{
-      display:flex;
-      justify-content:space-between;
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing:.08em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .ringWrap{
-      display:flex;
-      gap: 12px;
-      flex-wrap:wrap;
-    }
-    .ring{
-      --val: 72%;
-      width: 90px;
-      height: 90px;
-      border-radius: 999px;
-      background: conic-gradient(var(--accent2) 0 var(--val), rgba(255,255,255,.1) var(--val) 100%);
-      display:grid;
-      place-items:center;
-      position:relative;
-      box-shadow: var(--glow);
-    }
-    .ring::after{
-      content:"";
-      position:absolute;
-      width: 66px;
-      height: 66px;
-      border-radius: 999px;
-      background: var(--bg);
-      border: 1px solid var(--line);
-    }
-    .ring span,
-    .ring small{
-      position:relative;
-      z-index:1;
-      display:block;
-      text-align:center;
-    }
-    .ring span{
-      font-weight: 800;
-      font-size: 18px;
-    }
-    .ring small{
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 2px;
-    }
 
     /* Mini “KPI dial” */
     .dialWrap{
@@ -498,39 +415,6 @@
       border-radius: 999px;
     }
 
-    .caseCard{
-      position:relative;
-      overflow:hidden;
-    }
-    .caseCard::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, rgba(118,179,255,.18), transparent 60%);
-      opacity:.8;
-      pointer-events:none;
-    }
-    .caseCard .meta{
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing: .02em;
-    }
-    .caseLink{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      margin-top: 12px;
-      font-size: 13px;
-      text-decoration:none;
-      color: color-mix(in srgb, var(--accent2) 70%, var(--text));
-    }
-    .caseLink::after{
-      content:"→";
-      display:inline-block;
-      transition: transform .15s ease;
-    }
-    .caseLink:hover::after{ transform: translateX(3px); }
 
     /* Collapsible case studies */
     details{
@@ -539,6 +423,12 @@
       background: var(--card);
       box-shadow: var(--shadow);
       overflow:hidden;
+    }
+    details .detailBody{
+      overflow: hidden;
+    }
+    details[open] .detailBody{
+      animation: detailFade .25s ease;
     }
     summary{
       list-style:none;
@@ -617,40 +507,18 @@
       border: 1px solid var(--line);
       background: var(--card);
       box-shadow: var(--shadow);
+      align-items:flex-start;
     }
     .timelineItem .year{
-      min-width: 70px;
+      min-width: 86px;
       font-weight: 700;
       color: var(--accent);
+      text-align:right;
     }
     .timelineItem .role{
       font-weight: 600;
     }
 
-    .principle{
-      position:relative;
-      overflow:hidden;
-    }
-    .principle .badge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width: 34px; height: 34px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--card2) 70%, transparent);
-      font-size: 12px;
-      letter-spacing: .08em;
-      margin-bottom: 10px;
-    }
-    .principle::after{
-      content:"";
-      position:absolute;
-      width: 120px; height: 120px;
-      right:-40px; top:-40px;
-      background: radial-gradient(circle, rgba(109,224,181,.18), transparent 70%);
-      pointer-events:none;
-    }
 
     .now{
       margin-top: 14px;
@@ -702,15 +570,14 @@
       0%,100%{ transform: translateY(0); }
       50%{ transform: translateY(14px); }
     }
-    @keyframes scan{
-      0%{ transform: translateX(-100%); }
-      60%{ transform: translateX(120%); }
-      100%{ transform: translateX(120%); }
-    }
 
     @media (prefers-reduced-motion: reduce){
       *{ animation: none !important; transition: none !important; }
       body{ background-attachment: scroll; }
+    }
+    @keyframes detailFade{
+      from{ opacity: .4; }
+      to{ opacity: 1; }
     }
   </style>
 </head>
@@ -723,10 +590,8 @@
       <nav class="links">
         <a href="#impact">Impact</a>
         <a href="#story">Story</a>
-        <a href="#proof">Proof</a>
         <a href="#work">Work</a>
         <a href="#ops">How I Operate</a>
-        <a href="#principles">Principles</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
         <button class="themeToggle" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
@@ -843,19 +708,6 @@
             <b>Right now</b>
             <span class="small">Building calm, scalable support systems for fast-moving teams.</span>
           </div>
-          <div class="signal">
-            <div class="signalTop"><span>Live signal</span><span>Ops health</span></div>
-            <div class="ringWrap">
-              <div class="ring" style="--val:72%">
-                <span>72</span>
-                <small>Health</small>
-              </div>
-              <div class="ring" style="--val:88%">
-                <span>88</span>
-                <small>Coverage</small>
-              </div>
-            </div>
-          </div>
           <div class="cta" style="margin-top:14px;">
             <a class="btn" href="#work">See case studies</a>
             <a class="btn" href="#contact">Reach out</a>
@@ -908,28 +760,6 @@
       </div>
     </section>
 
-    <!-- PORTRAIT -->
-    <section id="portrait" class="section">
-      <div class="kicker">Portrait</div>
-      <h2>Warm, steady leadership.</h2>
-      <div class="grid stagger">
-        <div class="card span6 portrait">
-          <div class="portraitFrame">
-            <img src="./assets/dan-headshot.jpg" alt="Dan Hoffkins portrait" />
-          </div>
-        </div>
-        <div class="card span6">
-          <h3>How I show up</h3>
-          <p class="muted">
-            Calm under pressure, clear with priorities, and focused on outcomes that make teams feel supported.
-          </p>
-          <p class="muted" style="margin-top:10px;">
-            I believe modern CX Ops is equal parts systems design and human leadership.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- IMPACT (anchor) -->
     <section id="impact" class="section">
       <div class="kicker">Impact</div>
@@ -953,37 +783,6 @@
           <div class="kicker">Leadership</div>
           <h3>Coaching loops that scale</h3>
           <p class="muted">Consistent expectations + manager enablement so performance doesn’t depend on one great lead.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROOF STRIP -->
-    <section id="proof" class="section">
-      <div class="kicker">Proof</div>
-      <h2>Small stories, big leverage</h2>
-      <p class="muted" style="max-width:78ch;">Short snapshots of how I move teams from chaos to calm.</p>
-
-      <div class="grid stagger">
-        <div class="card span4 caseCard">
-          <div class="kicker">WFM + routing</div>
-          <h3>Cut backlog without heroics</h3>
-          <p class="muted">Rebalanced queues, tightened routing rules, and added live health reporting for faster triage.</p>
-          <div class="meta">Impact: predictable coverage, fewer escalations</div>
-          <a class="caseLink" href="#work">How I did it</a>
-        </div>
-        <div class="card span4 caseCard">
-          <div class="kicker">KPI cadence</div>
-          <h3>Turned metrics into coaching</h3>
-          <p class="muted">Built a small KPI set with weekly reviews that created clear expectations and movement.</p>
-          <div class="meta">Impact: CSAT/NPS lift in blended teams</div>
-          <a class="caseLink" href="#work">How I did it</a>
-        </div>
-        <div class="card span4 caseCard">
-          <div class="kicker">Incident motion</div>
-          <h3>Faster response under pressure</h3>
-          <p class="muted">Defined escalation paths, built SOPs, and aligned a 24/7 ownership model.</p>
-          <div class="meta">Impact: urgent issue response time ↓</div>
-          <a class="caseLink" href="#work">How I did it</a>
         </div>
       </div>
     </section>
@@ -1133,33 +932,6 @@
       </div>
     </section>
 
-    <!-- PRINCIPLES -->
-    <section id="principles" class="section">
-      <div class="kicker">Principles</div>
-      <h2>Leadership that scales without burnout</h2>
-      <p class="muted" style="max-width:78ch;">
-        I aim for calm, clarity, and ownership — so teams can move fast without chaos.
-      </p>
-
-      <div class="grid stagger">
-        <div class="card span4 principle">
-          <div class="badge">01</div>
-          <h3>Clarity over heroics</h3>
-          <p class="muted">I replace fire drills with simple rituals, clear ownership, and visibility into what matters.</p>
-        </div>
-        <div class="card span4 principle">
-          <div class="badge">02</div>
-          <h3>People-first, system-smart</h3>
-          <p class="muted">Tools should serve the team. I design workflows that respect cognitive load and build trust.</p>
-        </div>
-        <div class="card span4 principle">
-          <div class="badge">03</div>
-          <h3>Measure to improve</h3>
-          <p class="muted">Metrics are for coaching and clarity, not surveillance — the goal is better outcomes and happier teams.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- SKILLS (visual bars instead of chip soup) -->
     <section id="skills" class="section">
       <div class="kicker">Skills</div>
@@ -1301,6 +1073,58 @@
     };
     window.addEventListener("scroll", toggleBackTop);
     toggleBackTop();
+
+    // Smooth details expand/collapse
+    const detailsList = document.querySelectorAll("details");
+    detailsList.forEach((detail) => {
+      const summary = detail.querySelector("summary");
+      const content = detail.querySelector(".detailBody");
+      if (!summary || !content) return;
+
+      let isAnimating = false;
+      summary.addEventListener("click", (event) => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        event.preventDefault();
+        if (isAnimating) return;
+
+        isAnimating = true;
+        content.style.overflow = "hidden";
+
+        if (detail.open) {
+          const start = content.offsetHeight;
+          content.style.height = start + "px";
+          requestAnimationFrame(() => {
+            content.style.transition = "height 0.28s ease";
+            content.style.height = "0px";
+          });
+          const onEnd = () => {
+            detail.open = false;
+            content.style.transition = "";
+            content.style.height = "";
+            content.style.overflow = "";
+            isAnimating = false;
+            content.removeEventListener("transitionend", onEnd);
+          };
+          content.addEventListener("transitionend", onEnd);
+        } else {
+          detail.open = true;
+          const end = content.scrollHeight;
+          content.style.height = "0px";
+          requestAnimationFrame(() => {
+            content.style.transition = "height 0.28s ease";
+            content.style.height = end + "px";
+          });
+          const onEnd = () => {
+            content.style.transition = "";
+            content.style.height = "";
+            content.style.overflow = "";
+            isAnimating = false;
+            content.removeEventListener("transitionend", onEnd);
+          };
+          content.addEventListener("transitionend", onEnd);
+        }
+      });
+    });
   </script>
 </body>
 </html>
