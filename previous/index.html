@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dan Hoffkins – Customer Experience Ops Manager</title>
+  <meta name="description" content="Dan Hoffkins — Customer Experience Operations Manager. Workforce optimization, metrics that matter, and team leadership that improves CSAT." />
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+    :root{
+      /* Tech-forward, warm, human */
+      --bg:#0f1115;
+      --bg2:#141a20;
+      --card: rgba(255,255,255,.05);
+      --card2: rgba(255,255,255,.08);
+      --text:#f5f5f5;
+      --muted: rgba(245,245,245,.72);
+      --line: rgba(245,245,245,.12);
+
+      --accent:#ffb86b;  /* warm amber */
+      --accent2:#76b3ff; /* tech blue */
+      --accent3:#6de0b5; /* human mint */
+
+      --shadow: 0 18px 60px rgba(0,0,0,.38);
+      --glow: 0 0 0 1px rgba(118,179,255,.12), 0 16px 50px rgba(118,179,255,.16);
+      --radius:18px;
+      --max: 1080px;
+
+      --font: "Space Grotesk", "Manrope", "Segoe UI", sans-serif;
+      --serif: "Fraunces", "Iowan Old Style", serif;
+    }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+    html[data-theme="light"]{
+      --bg:#f6f4f0;
+      --bg2:#ffffff;
+      --card: rgba(16,19,24,.05);
+      --card2: rgba(16,19,24,.08);
+      --text:#0f1115;
+      --muted: rgba(16,19,24,.68);
+      --line: rgba(16,19,24,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.12);
+      --glow: 0 0 0 1px rgba(118,179,255,.18), 0 16px 50px rgba(16,19,24,.1);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:
+        radial-gradient(900px 560px at 10% -10%, rgba(255,184,107,.18), transparent 62%),
+        radial-gradient(740px 460px at 90% 0%, rgba(118,179,255,.16), transparent 60%),
+        radial-gradient(520px 380px at 40% 18%, rgba(109,224,181,.12), transparent 60%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 110px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 110px),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      background-attachment: fixed;
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 28px 18px 80px;}
+
+    .skip-link{
+      position:absolute;
+      left:14px;
+      top:-40px;
+      background: var(--card2);
+      border:1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 10px;
+      z-index: 40;
+      text-decoration:none;
+    }
+    .skip-link:focus{ top:14px; }
+
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: rgba(15,17,21,.78);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 14px 18px;
+    }
+    .brand{
+      font-weight: 780;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      background: linear-gradient(90deg, var(--text), color-mix(in srgb, var(--accent2) 45%, var(--text)));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .links{
+      display:flex;
+      align-items:center;
+      gap: 6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .links a{
+      text-decoration:none;
+      color:var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+    }
+    .links a:hover{
+      background: var(--card);
+      color: var(--text);
+    }
+    .themeToggle{
+      border:1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+      cursor:pointer;
+      font:inherit;
+      line-height:1;
+    }
+    .themeToggle:hover{ background: var(--card2); color: var(--text); }
+
+    .progress{
+      height: 3px;
+      background: rgba(0,0,0,0);
+      border-top: 1px solid var(--line);
+    }
+    .progress > span{
+      display:block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent3), var(--accent2));
+      box-shadow: 0 0 14px rgba(118,179,255,.45);
+      transition: width .15s ease;
+    }
+
+    .backTop{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card2) 80%, transparent);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index: 30;
+    }
+    .backTop.is-visible{
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Typography + spacing */
+    .kicker{
+      color: color-mix(in srgb, var(--accent3) 65%, var(--muted));
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 12px;
+      margin: 0 0 10px;
+    }
+    h1{
+      margin: 12px 0 10px;
+      font-family: var(--serif);
+      letter-spacing: -0.8px;
+      line-height: 1.04;
+      font-size: clamp(40px, 5vw, 64px);
+    }
+    h2{ margin: 0 0 10px; font-size: 24px; letter-spacing: -.2px; }
+    h3{ margin: 0 0 8px; font-size: 18px; letter-spacing: -.1px; }
+    p{ margin: 0; }
+    .muted{ color: var(--muted); }
+    .small{ font-size: 13px; color: var(--muted); }
+
+    /* Sections */
+    .section{
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 90px;
+    }
+
+    /* Layout */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .card{
+      grid-column: span 12;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    @media (min-width: 920px){
+      .span4{ grid-column: span 4; }
+      .span5{ grid-column: span 5; }
+      .span6{ grid-column: span 6; }
+      .span7{ grid-column: span 7; }
+      .span8{ grid-column: span 8; }
+    }
+
+    /* Hero */
+    .hero{
+      padding: 46px 0 22px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow:hidden;
+    }
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto;
+      border-radius: 999px;
+      filter: blur(12px);
+      opacity:.5;
+      z-index:0;
+      pointer-events:none;
+    }
+    .hero::before{
+      width: 380px; height: 380px;
+      right: -80px; top:-80px;
+      background: radial-gradient(circle, rgba(118,179,255,.26), transparent 70%);
+      animation: float 10s ease-in-out infinite;
+    }
+    .hero::after{
+      width: 320px; height: 320px;
+      left: -60px; bottom:-120px;
+      background: radial-gradient(circle, rgba(255,184,107,.22), transparent 70%);
+      animation: float 12s ease-in-out infinite reverse;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      width: fit-content;
+      font-size: 13px;
+    }
+    .headshotWrap{
+      margin-top: 14px;
+      display:flex;
+      align-items:center;
+      gap: 14px;
+    }
+    .headshot{
+      width: 82px;
+      height: 82px;
+      border-radius: 20px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: var(--card2);
+      flex: 0 0 auto;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .headshot img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+      transition: transform .2s ease;
+    }
+    .headshot:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--glow);
+    }
+    .headshot:hover img{ transform: scale(1.03); }
+    .headshotMeta{
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+    }
+    .headshotMeta b{ font-size: 15px; }
+    .headshotMeta .small{ font-size: 12px; }
+
+    .dot{
+      width: 9px; height: 9px; border-radius: 50%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(199,160,122,.12);
+    }
+    .subhead{
+      margin-top: 10px;
+      max-width: 68ch;
+      font-size: 18px;
+      color: var(--muted);
+    }
+    .cta{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      text-decoration:none;
+      color: var(--text);
+    }
+    .btn:hover{ background: var(--card2); }
+    .btn.primary{
+      border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+      background: linear-gradient(180deg,
+        color-mix(in srgb, var(--accent) 26%, transparent),
+        var(--card)
+      );
+      font-weight: 750;
+      box-shadow: var(--glow);
+    }
+
+    /* Dashboard stats */
+    .stat{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--card2) 70%, transparent);
+      border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+    }
+    .stat b{
+      font-size: 28px;
+      letter-spacing: -.4px;
+    }
+    .spark{
+      width: 120px; height: 34px;
+      opacity: .95;
+    }
+    .spark path{
+      animation: sparkDraw 1.6s ease both;
+    }
+
+
+    /* Mini “KPI dial” */
+    .dialWrap{
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .dial{
+      width: 84px; height: 84px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 60%), var(--card);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: var(--shadow);
+    }
+    .dial span{
+      font-weight: 850;
+      letter-spacing: -.3px;
+      font-size: 18px;
+    }
+    .dialLabel{ max-width: 40ch; }
+    .dialLabel .small{ margin-top: 4px; display:block; }
+
+    /* Skills bars */
+    .barRow{ margin-top: 12px; }
+    .barTop{
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .bar{
+      margin-top: 8px;
+      height: 10px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card2) 75%, transparent);
+      border: 1px solid var(--line);
+      overflow:hidden;
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      width: var(--w);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 85%, transparent), color-mix(in srgb, var(--accent2) 70%, transparent));
+      border-radius: 999px;
+    }
+
+
+    /* Collapsible case studies */
+    details{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    details .detailBody{
+      overflow: hidden;
+    }
+    details[open] .detailBody{
+      animation: detailFade .25s ease;
+    }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 16px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .sumTitle{
+      display:flex; flex-direction:column; gap: 2px;
+    }
+    .chev{
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      display:flex; align-items:center; justify-content:center;
+      border: 1px solid var(--line);
+      background: var(--card2);
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+    details[open] .chev{ transform: rotate(180deg); color: var(--text); }
+    .detailBody{
+      padding: 0 18px 18px;
+      border-top: 1px solid var(--line);
+    }
+    .tri{
+      display:grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (min-width: 920px){
+      .tri{ grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .box{
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+      background: color-mix(in srgb, var(--card2) 70%, transparent);
+    }
+
+    /* Simple ops flow */
+    .flow{
+      display:grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    @media (min-width: 920px){
+      .flow{ grid-template-columns: repeat(4, 1fr); }
+    }
+    .step{
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+    .step b{ display:block; margin-bottom: 4px; }
+    .step .small{ display:block; }
+
+    .storyLead{
+      font-size: 18px;
+      color: var(--muted);
+    }
+    .timeline{
+      margin-top: 14px;
+      display:grid;
+      gap: 12px;
+    }
+    .timelineItem{
+      display:flex;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      align-items:flex-start;
+    }
+    .timelineItem .year{
+      min-width: 86px;
+      font-weight: 700;
+      color: var(--accent);
+      text-align:right;
+    }
+    .timelineItem .role{
+      font-weight: 600;
+    }
+
+
+    .now{
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent2) 12%, transparent), var(--card));
+    }
+    .now b{ display:block; margin-bottom: 4px; }
+
+    .stagger > *{
+      animation: fadeUp .7s ease both;
+    }
+    .stagger > *:nth-child(2){ animation-delay: .08s; }
+    .stagger > *:nth-child(3){ animation-delay: .16s; }
+    .stagger > *:nth-child(4){ animation-delay: .24s; }
+    .stagger > *:nth-child(5){ animation-delay: .32s; }
+
+    .fadeUp{ animation: fadeUp .7s ease both; }
+    .fadeUp.delay1{ animation-delay: .08s; }
+    .fadeUp.delay2{ animation-delay: .16s; }
+    .fadeUp.delay3{ animation-delay: .24s; }
+
+    a:focus-visible,
+    button:focus-visible{
+      outline: 2px solid color-mix(in srgb, var(--accent2) 70%, transparent);
+      outline-offset: 2px;
+      border-radius: 12px;
+    }
+
+    footer{
+      padding-top: 22px;
+      color: var(--muted);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    @keyframes sparkDraw{
+      from{ stroke-dasharray: 200; stroke-dashoffset: 200; }
+      to{ stroke-dasharray: 200; stroke-dashoffset: 0; }
+    }
+    @keyframes float{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(14px); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; }
+      body{ background-attachment: scroll; }
+    }
+    @keyframes detailFade{
+      from{ opacity: .4; }
+      to{ opacity: 1; }
+    }
+  </style>
+</head>
+
+  <body id="top">
+  <div style="padding:12px 18px;text-align:center;background:#f5f2e9;color:#202b28;font-size:14px;">Previous design · <a href="../" style="text-decoration:underline;">Compare with the new site ↗</a></div>
+  <a class="skip-link" href="#impact">Skip to content</a>
+  <header>
+    <div class="nav">
+      <div class="brand">Dan Hoffkins</div>
+      <nav class="links">
+        <a href="#impact">Impact</a>
+        <a href="#story">Story</a>
+        <a href="#work">Work</a>
+        <a href="#ops">How I Operate</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <button class="themeToggle" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
+      </nav>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Scroll progress" aria-valuemin="0" aria-valuemax="100">
+      <span id="progressBar"></span>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO (sell outcomes first) -->
+    <section class="hero">
+      <div class="pill fadeUp"><span class="dot"></span> CX Ops • Support Ops • Workforce • Leadership</div>
+
+      <h1 class="fadeUp delay1">Customer Experience Ops that feels calm — even at scale.</h1>
+
+      <p class="subhead fadeUp delay2">
+        I’m Dan Hoffkins. I build predictable support systems: queue health, staffing alignment, KPI clarity, and coaching loops that move CSAT.
+      </p>
+
+      <div class="headshotWrap fadeUp delay3">
+        <div class="headshot">
+          <img src="../assets/dan-headshot.jpg" alt="Dan Hoffkins headshot" />
+        </div>
+        <div class="headshotMeta">
+          <b>Dan Hoffkins</b>
+          <span class="small">CX Ops leader • Systems + people • Calm at scale</span>
+        </div>
+      </div>
+
+      <div class="cta fadeUp delay3" style="margin-top:12px;">
+        <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">Email</a>
+        <a class="btn" href="../Daniel-Hoffkins-Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
+        <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+
+      <div class="grid stagger" style="margin-top:18px; position:relative; z-index:1;">
+        <div class="card span7">
+          <div class="kicker">Impact dashboard</div>
+
+          <div class="stat">
+            <div>
+              <b>+20%</b>
+              <div class="small">CSAT / NPS lift (blended internal + BPO)</div>
+            </div>
+            <svg class="spark" viewBox="0 0 120 34" fill="none" aria-hidden="true" focusable="false">
+              <path d="M2 28 C16 26, 18 14, 28 18 C38 22, 44 8, 56 12 C66 16, 72 6, 84 10 C96 14, 104 6, 118 6" stroke="currentColor" stroke-width="2" opacity=".35"/>
+              <path d="M2 28 C16 26, 18 14, 28 18 C38 22, 44 8, 56 12 C66 16, 72 6, 84 10 C96 14, 104 6, 118 6" stroke="url(#g1)" stroke-width="2.8" />
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="120" y2="0">
+                  <stop stop-color="rgba(199,160,122,.95)"/>
+                  <stop offset="1" stop-color="rgba(143,167,195,.95)"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="stat" style="margin-top:10px;">
+            <div>
+              <b>-80%</b>
+              <div class="small">Urgent issue response time (incident motion)</div>
+            </div>
+            <svg class="spark" viewBox="0 0 120 34" fill="none" aria-hidden="true" focusable="false">
+              <path d="M2 6 C18 8, 26 10, 36 12 C48 14, 56 16, 66 18 C76 20, 86 22, 96 24 C106 26, 110 28, 118 28" stroke="url(#g2)" stroke-width="2.8"/>
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="120" y2="0">
+                  <stop stop-color="rgba(143,167,195,.95)"/>
+                  <stop offset="1" stop-color="rgba(199,160,122,.95)"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="stat" style="margin-top:10px;">
+            <div>
+              <b>-50%</b>
+              <div class="small">Manual coordination reduced (ops workflows + docs)</div>
+            </div>
+            <svg class="spark" viewBox="0 0 120 34" fill="none" aria-hidden="true" focusable="false">
+              <path d="M2 10 C16 12, 28 18, 40 16 C54 14, 64 22, 76 20 C90 18, 102 26, 118 26" stroke="url(#g3)" stroke-width="2.8"/>
+              <defs>
+                <linearGradient id="g3" x1="0" y1="0" x2="120" y2="0">
+                  <stop stop-color="rgba(199,160,122,.95)"/>
+                  <stop offset="1" stop-color="rgba(143,167,195,.95)"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="dialWrap">
+            <div class="dial"><span>WFM</span></div>
+            <div class="dial"><span>KPI</span></div>
+            <div class="dial"><span>CSAT</span></div>
+            <div class="dialLabel">
+              <b>What you get when I’m on your team</b>
+              <span class="small">Clear ownership, a clean operating cadence, and a support org that doesn’t rely on heroics.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span5">
+          <div class="kicker">In one minute</div>
+          <h2 style="margin-top:6px;">Operator mindset. People-first leadership.</h2>
+          <p class="muted" style="margin-top:10px;">
+            I’m a CX Ops leader with 10+ years scaling support across healthcare, SaaS, and startup environments — including regulated oncology and diagnostics.
+          </p>
+          <p class="muted" style="margin-top:10px;">
+            I do my best work when things are messy: stressed queues, unclear ownership, inconsistent workflows, noisy data.
+            I bring structure, clarity, and coaching that sticks.
+          </p>
+          <div class="now">
+            <b>Right now</b>
+            <span class="small">Building calm, scalable support systems for fast-moving teams.</span>
+          </div>
+          <div class="cta" style="margin-top:14px;">
+            <a class="btn" href="#work">See case studies</a>
+            <a class="btn" href="#contact">Reach out</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section id="story" class="section">
+      <div class="kicker">Story</div>
+      <h2>Human leadership, operational clarity.</h2>
+
+      <div class="grid stagger">
+        <div class="card span6">
+          <p class="storyLead">I lead with clarity and warmth, especially when teams are under pressure.</p>
+          <p class="muted" style="margin-top:10px;">
+            My goal is to make support feel predictable: crisp ownership, reliable cadence, and visible wins that keep people motivated.
+          </p>
+          <p class="muted" style="margin-top:10px;">
+            I focus on coaching and systems that reduce noise while keeping the human experience front and center.
+          </p>
+        </div>
+        <div class="card span6">
+          <div class="kicker">Trajectory</div>
+          <div class="timeline">
+            <div class="timelineItem">
+              <div class="year">2013-2016</div>
+              <div>
+                <div class="role">Frontline to Lead</div>
+                <div class="small">Built support foundations and coached new teams.</div>
+              </div>
+            </div>
+            <div class="timelineItem">
+              <div class="year">2017-2020</div>
+              <div>
+                <div class="role">Ops Builder</div>
+                <div class="small">Scaled tooling, QA, and staffing models for growing orgs.</div>
+              </div>
+            </div>
+            <div class="timelineItem">
+              <div class="year">2021-Now</div>
+              <div>
+                <div class="role">CX Ops Leader</div>
+                <div class="small">Drove KPI cadence, incident response, and leadership enablement.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT (anchor) -->
+    <section id="impact" class="section">
+      <div class="kicker">Impact</div>
+      <h2>Results that ops leaders care about</h2>
+      <p class="muted" style="max-width:78ch;">
+        I focus on outcomes: predictable coverage, cleaner queues, better escalation hygiene, and KPIs that drive behavior—not just reporting.
+      </p>
+
+      <div class="grid stagger">
+        <div class="card span4">
+          <div class="kicker">Queue health</div>
+          <h3>Backlog ↓, predictability ↑</h3>
+          <p class="muted">Align staffing to demand, tighten routing, and instrument queue visibility so surprises stop happening.</p>
+        </div>
+        <div class="card span4">
+          <div class="kicker">Metrics</div>
+          <h3>Small KPI set, big movement</h3>
+          <p class="muted">Turn KPIs into a weekly cadence: review → coaching → iteration → measurable improvement.</p>
+        </div>
+        <div class="card span4">
+          <div class="kicker">Leadership</div>
+          <h3>Coaching loops that scale</h3>
+          <p class="muted">Consistent expectations + manager enablement so performance doesn’t depend on one great lead.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK (collapsible to reduce clutter) -->
+    <section id="work" class="section">
+      <div class="kicker">Work</div>
+      <h2>Case studies (click to expand)</h2>
+      <p class="muted" style="max-width:78ch;">Skimmable at first glance. Full detail when you want it.</p>
+
+      <div class="grid" style="margin-top:14px;">
+        <div class="span12" style="grid-column: span 12; display:grid; gap:12px;">
+
+          <details>
+            <summary>
+              <div class="sumTitle">
+                <b>Workforce Management & Queue Optimization</b>
+                <span class="small">Coverage aligned to demand • backlog control • fewer surprise escalations</span>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="detailBody">
+              <div class="tri">
+                <div class="box">
+                  <div class="kicker">Problem</div>
+                  <p class="muted">Queues and staffing didn’t match demand, creating avoidable backlog and inconsistent response times.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">What I did</div>
+                  <p class="muted">Tightened queue strategy and workforce planning, aligned capacity to volume, and created clearer queue health reporting.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">Impact</div>
+                  <p class="muted">More predictable coverage, improved queue health, and fewer “surprise” escalations.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <div class="sumTitle">
+                <b>KPIs that Drive Behavior (Not Just Reporting)</b>
+                <span class="small">Dashboards → cadence → coaching → measurable movement</span>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="detailBody">
+              <div class="tri">
+                <div class="box">
+                  <div class="kicker">Problem</div>
+                  <p class="muted">Metrics existed, but they weren’t connected to coaching and decisions—so they didn’t change outcomes.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">What I did</div>
+                  <p class="muted">Refined KPIs, built dashboards, and tied weekly reviews + coaching to a small set of actionable indicators.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">Impact</div>
+                  <p class="muted">Clearer accountability and stronger performance rhythms; contributed to improved CSAT/NPS in blended teams.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <div class="sumTitle">
+                <b>Leadership, Coaching & Performance Uplift</b>
+                <span class="small">Manager enablement • QA alignment • consistent expectations</span>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="detailBody">
+              <div class="tri">
+                <div class="box">
+                  <div class="kicker">Problem</div>
+                  <p class="muted">Scaling teams needed consistent coaching and leadership structure across tiers.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">What I did</div>
+                  <p class="muted">Implemented structured coaching and mentorship, developed team leads, and reinforced expectations with data.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">Impact</div>
+                  <p class="muted">Improved performance and more consistent coaching across support tiers.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <div class="sumTitle">
+                <b>Incident Management & High-Priority Escalations</b>
+                <span class="small">24/7 motion • clear ownership • faster urgent response</span>
+              </div>
+              <div class="chev">⌄</div>
+            </summary>
+            <div class="detailBody">
+              <div class="tri">
+                <div class="box">
+                  <div class="kicker">Problem</div>
+                  <p class="muted">Urgent issues required a system for triage, ownership, and fast response—especially at scale.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">What I did</div>
+                  <p class="muted">Built and scaled an incident response motion, clarified escalation paths, and introduced consistent SOPs.</p>
+                </div>
+                <div class="box">
+                  <div class="kicker">Impact</div>
+                  <p class="muted">Faster urgent issue response and clearer ownership under pressure.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- OPS PLAYBOOK (visual, not text) -->
+    <section id="ops" class="section">
+      <div class="kicker">How I operate</div>
+      <h2>My CX Ops playbook</h2>
+      <p class="muted" style="max-width:78ch;">
+        This is the loop I run to turn “support feels chaotic” into “support feels predictable.”
+      </p>
+
+      <div class="flow stagger">
+        <div class="step">
+          <b>1) Diagnose</b>
+          <span class="small">Queue health, volume patterns, SLA misses, top drivers</span>
+        </div>
+        <div class="step">
+          <b>2) Align</b>
+          <span class="small">Staffing ↔ demand, routing rules, ownership, escalation paths</span>
+        </div>
+        <div class="step">
+          <b>3) Instrument</b>
+          <span class="small">Dashboards + weekly cadence; make “good” visible</span>
+        </div>
+        <div class="step">
+          <b>4) Coach</b>
+          <span class="small">Feedback loops that scale: managers, QA, enablement</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS (visual bars instead of chip soup) -->
+    <section id="skills" class="section">
+      <div class="kicker">Skills</div>
+      <h2>What I’m strong at</h2>
+
+      <div class="grid stagger">
+        <div class="card span6">
+          <h3>Leadership & Ops</h3>
+
+          <div class="barRow">
+            <div class="barTop"><span>Workforce planning & queue strategy</span><span>Expert</span></div>
+            <div class="bar"><i style="--w:92%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>KPI design & operating cadence</span><span>Expert</span></div>
+            <div class="bar"><i style="--w:88%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Escalations & incident response</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:84%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Coaching, QA alignment, manager enablement</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:86%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>BPO management (blended models)</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:80%"></i></div>
+          </div>
+        </div>
+
+        <div class="card span6">
+          <h3>Platforms & reporting</h3>
+          <p class="muted">I’m tool-agnostic, but here’s where I’ve done a lot of work.</p>
+
+          <div class="barRow">
+            <div class="barTop"><span>Zendesk / ticketing ops</span><span>Expert</span></div>
+            <div class="bar"><i style="--w:90%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>Reporting & dashboards</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:85%"></i></div>
+          </div>
+
+          <div class="barRow">
+            <div class="barTop"><span>CRM + cross-functional ops</span><span>Advanced</span></div>
+            <div class="bar"><i style="--w:78%"></i></div>
+          </div>
+
+          <div class="small" style="margin-top:14px;">
+            Zendesk • Salesforce • Tableau • Looker • Metabase • Jira • Talkdesk • HubSpot • Notion • Sheets/Excel
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" style="border-bottom:none;">
+      <div class="kicker">Contact</div>
+      <h2>Let’s talk.</h2>
+      <p class="muted" style="max-width:78ch;">
+        If you’re hiring for Customer Experience Ops, Support Ops, or an ops leadership role focused on scaling teams and improving CSAT,
+        I’d love to connect.
+      </p>
+
+      <div class="cta" style="margin-top:14px;">
+        <a class="btn primary" href="mailto:daniel.hoffkins@gmail.com">daniel.hoffkins@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/dan-hoffkins" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+
+      <footer style="margin-top:22px;">
+        <div class="small">© <span id="year"></span> Dan Hoffkins</div>
+        <div class="small">Clean ops, clear outcomes.</div>
+      </footer>
+    </section>
+
+  </main>
+
+  <a class="backTop" id="backTop" href="#top">Back to top ↑</a>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Theme toggle (persists)
+    const key = "theme";
+    const btn = document.getElementById("themeToggle");
+    const root = document.documentElement;
+
+    const setTheme = (mode) => {
+      root.dataset.theme = mode === "light" ? "light" : "";
+      const isLight = root.dataset.theme === "light";
+      btn.setAttribute("aria-pressed", String(isLight));
+      btn.textContent = isLight ? "Theme: Light" : "Theme: Dark";
+      localStorage.setItem(key, isLight ? "light" : "dark");
+    };
+
+    const saved = localStorage.getItem(key);
+    setTheme(saved === "light" ? "light" : "dark");
+
+    btn.addEventListener("click", () => {
+      setTheme(root.dataset.theme === "light" ? "dark" : "light");
+    });
+
+    // Scroll progress
+    const bar = document.getElementById("progressBar");
+    const barWrap = bar?.parentElement;
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const value = max > 0 ? Math.min(100, Math.max(0, (doc.scrollTop / max) * 100)) : 0;
+      if (bar) bar.style.width = value.toFixed(1) + "%";
+      if (barWrap) barWrap.setAttribute("aria-valuenow", value.toFixed(0));
+    };
+
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateProgress();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+
+    // Back to top pill
+    const backTop = document.getElementById("backTop");
+    const toggleBackTop = () => {
+      if (!backTop) return;
+      backTop.classList.toggle("is-visible", window.scrollY > 420);
+    };
+    window.addEventListener("scroll", toggleBackTop);
+    toggleBackTop();
+
+    // Smooth details expand/collapse
+    const detailsList = document.querySelectorAll("details");
+    detailsList.forEach((detail) => {
+      const summary = detail.querySelector("summary");
+      const content = detail.querySelector(".detailBody");
+      if (!summary || !content) return;
+
+      let isAnimating = false;
+      summary.addEventListener("click", (event) => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        event.preventDefault();
+        if (isAnimating) return;
+
+        isAnimating = true;
+        content.style.overflow = "hidden";
+
+        if (detail.open) {
+          const start = content.offsetHeight;
+          content.style.height = start + "px";
+          requestAnimationFrame(() => {
+            content.style.transition = "height 0.28s ease";
+            content.style.height = "0px";
+          });
+          const onEnd = () => {
+            detail.open = false;
+            content.style.transition = "";
+            content.style.height = "";
+            content.style.overflow = "";
+            isAnimating = false;
+            content.removeEventListener("transitionend", onEnd);
+          };
+          content.addEventListener("transitionend", onEnd);
+        } else {
+          detail.open = true;
+          const end = content.scrollHeight;
+          content.style.height = "0px";
+          requestAnimationFrame(() => {
+            content.style.transition = "height 0.28s ease";
+            content.style.height = end + "px";
+          });
+          const onEnd = () => {
+            content.style.transition = "";
+            content.style.height = "";
+            content.style.overflow = "";
+            isAnimating = false;
+            content.removeEventListener("transitionend", onEnd);
+          };
+          content.addEventListener("transitionend", onEnd);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
