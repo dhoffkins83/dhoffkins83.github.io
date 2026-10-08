@@ -167,6 +167,34 @@
 </summary>
 <p>Built an AI-assisted documentation workflow around Zendesk, with GitHub as the repository for support-system reference material. The value is practical: capturing how the system works in a form the team can maintain and refer back to.</p>
 <p class="project-path">Claude APIs → Zendesk documentation → GitHub</p>
+<div class="api-walkthrough">
+<h4>Inside an API-assisted workflow</h4>
+<p class="api-disclaimer">Conceptual example using fictional data—not production code, a live API call, or company documentation.</p>
+<ol class="api-flow" aria-label="Illustrative integration architecture">
+<li><strong>Prepare</strong><span>Select relevant system configuration and remove sensitive fields.</span></li>
+<li><strong>Generate</strong><span>Send scoped context to Claude to draft a reference document.</span></li>
+<li><strong>Review</strong><span>Check the draft against the source before storing it in GitHub.</span></li>
+</ol>
+<div class="api-example">
+<h4>Illustrative request payload</h4>
+<pre><code>{
+  "task": "draft_support_reference",
+  "source": {
+    "rule": "Device setup questions",
+    "category": "setup",
+    "destination": "Technical support"
+  },
+  "instructions": "Explain the rule using only supplied facts."
+}</code></pre>
+<h4>Illustrative draft response</h4>
+<pre><code>{
+  "title": "Device setup routing",
+  "summary": "Setup questions route to Technical support.",
+  "status": "draft_for_review"
+}</code></pre>
+</div>
+<p><strong>What makes an integration dependable?</strong> Validate inputs and outputs, handle rate limits and failed requests, keep credentials server-side, and review generated documentation before publishing. These are design considerations—not claims about this project's implementation.</p>
+</div>
 </details>
 </div>
 </article>
