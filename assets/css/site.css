@@ -528,21 +528,34 @@ border-color:var(--teal)}
 background:var(--ink)}
 .hello{
 display:flex;
-gap:14px;
+gap:20px;
 align-items:center;
-margin-top:30px}
+margin-top:32px}
+.hello + .intro{
+margin-top:20px}
 .hello img{
-width:54px;
-height:54px;
+width:96px;
+height:96px;
+flex-shrink:0;
+border:4px solid #fffdf6;
+box-shadow:0 4px 16px #203c2910;
 border-radius:50%;
 object-fit:cover}
 .hello strong,.hello span{
 display:block}
 .hello strong{
-font-size:14px}
+font-family:Manrope,sans-serif;
+font-size:22px;
+letter-spacing:-.03em}
 .hello span{
-font-size:12px;
+font-size:14px;
 color:var(--muted)}
+@media(max-width:600px){
+.hello{gap:16px}
+.hello img{width:80px;height:80px}
+.hello strong{font-size:20px}
+.hello span{font-size:13px}
+}
 
 .system-board{
 background:var(--dark);
