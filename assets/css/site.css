@@ -992,6 +992,8 @@ font-size:16px}
 .story-results { padding-left:22px; color:var(--muted); font-size:16px; }
 .story-results li { margin:10px 0; }
 .case .story-note { font-size:13px; }
+.roles .role-title { font-weight:600; margin-top:6px; }
+.roles .role-summary { margin-top:12px; max-width:54ch; line-height:1.7; }
 @media (max-width:600px) {
   .case .index { font-size:15px; }
   .story-results { font-size:17px; }
